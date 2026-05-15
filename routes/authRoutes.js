@@ -4,71 +4,85 @@ const router = express.Router();
 const connection = require("../db/snowflake");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("../middleware/authMiddleware");
+const admin = require("../firebaseAdmin");
 
 
 // ================= LOGIN ROUTE =================
 router.post("/login", async (req, res) => {
 
-  const { email, password } = req.body;
+  try {
 
-  // SAFE QUERY WITH BINDS
-  const query = `
-    SELECT * 
-    FROM LOGINDETAILS.PUBLIC.USERDETAILS
-    WHERE EMAIL = ?
-  `;
+    const { firebaseToken } = req.body;
 
-  connection.execute({
-    sqlText: query,
-    binds: [email],
+    // VERIFY FIREBASE TOKEN
+    const decodedToken =
+      await admin.auth().verifyIdToken(firebaseToken);
 
-    complete: function (err, stmt, rows) {
+    const email = decodedToken.email;
 
-      // DATABASE ERROR
-      if (err) {
-        return res.status(500).json({
-          message: "Database error",
-          error: err.message,
-        });
-      }
+    // FIND USER IN DATABASE
+    const query = `
+      SELECT *
+      FROM LOGINDETAILS.PUBLIC.USERDETAILS
+      WHERE EMAIL = ?
+    `;
 
-      // USER NOT FOUND
-      if (rows.length === 0) {
-        return res.status(404).json({
-          message: "User not found",
-        });
-      }
+    connection.execute({
+      sqlText: query,
+      binds: [email],
 
-      const user = rows[0];
+      complete: function (err, stmt, rows) {
 
-      // WRONG PASSWORD
-      if (user.PASSWORD !== password) {
-        return res.status(401).json({
-          message: "Invalid password",
-        });
-      }
-
-      // GENERATE JWT TOKEN
-      const token = jwt.sign(
-        {
-          email: user.EMAIL,
-          id: user.ID,
-        },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: "1h",
+        // DATABASE ERROR
+        if (err) {
+          return res.status(500).json({
+            message: "Database error",
+            error: err.message,
+          });
         }
-      );
 
-      // SUCCESS RESPONSE
-      return res.json({
-        message: "Login successful",
-        token,
-      });
-    },
-  });
+        // USER NOT FOUND
+        if (rows.length === 0) {
+          return res.status(404).json({
+            message: "User not found",
+          });
+        }
+
+        const user = rows[0];
+
+        // GENERATE APP JWT
+        const token = jwt.sign(
+          {
+            email: user.EMAIL,
+            id: user.ID,
+          },
+          process.env.JWT_SECRET,
+          {
+            expiresIn: "1h",
+          }
+        );
+
+        // SUCCESS RESPONSE
+        return res.json({
+          message: "Login successful",
+          token,
+          user: {
+            id: user.ID,
+            name: user.NAME,
+            email: user.EMAIL,
+          },
+        });
+      },
+    });
+
+  } catch (error) {
+
+    return res.status(401).json({
+      message: "Invalid Firebase token",
+      error: error.message,
+    });
+  }
 });
-
 
 // ================= PROTECTED DASHBOARD ROUTE =================
 router.get("/dashboard", verifyToken, (req, res) => {
@@ -84,7 +98,7 @@ router.get("/dashboard", verifyToken, (req, res) => {
 // ================= SIGNUP ROUTE =================
 router.post("/signup", (req, res) => {
 
-  const { name, email, password } = req.body;
+  const { name, email, firebaseUid } = req.body;
 
   // CHECK IF USER EXISTS
   const checkQuery = `
@@ -109,23 +123,24 @@ router.post("/signup", (req, res) => {
 
       // USER ALREADY EXISTS
       if (rows.length > 0) {
-        return res.status(400).json({
+        return res.status(200).json({
           message: "User already exists",
+          isNewUser:false;
         });
       }
 
       // INSERT NEW USER
       const insertQuery = `
         INSERT INTO LOGINDETAILS.PUBLIC.USERDETAILS
-        (ID, NAME, EMAIL, PASSWORD)
-        VALUES (?, ?, ?, ?)
+        (ID, NAME, EMAIL)
+        VALUES (?, ?, ?)
       `;
 
       const id = Date.now().toString();
 
       connection.execute({
         sqlText: insertQuery,
-        binds: [id, name, email, password],
+        binds: [id, name, email],
 
         complete: function (err2) {
 
@@ -140,6 +155,7 @@ router.post("/signup", (req, res) => {
           // SUCCESS RESPONSE
           return res.status(201).json({
             message: "User created successfully",
+            isNewUser:true,
             user: {
               id,
               name,
@@ -151,5 +167,39 @@ router.post("/signup", (req, res) => {
     },
   });
 });
+
+// ================= SET PASSWORD ROUTE =================
+// router.post("/set-password", (req, res) => {
+
+//   const { email, password } = req.body;
+
+//   // UPDATE PASSWORD QUERY
+//   const updateQuery = `
+//     UPDATE LOGINDETAILS.PUBLIC.USERDETAILS
+//     SET PASSWORD = ?
+//     WHERE EMAIL = ?
+//   `;
+
+//   connection.execute({
+//     sqlText: updateQuery,
+//     binds: [password, email],
+
+//     complete: function (err, stmt, rows) {
+
+//       // DATABASE ERROR
+//       if (err) {
+//         return res.status(500).json({
+//           message: "Password update failed",
+//           error: err.message,
+//         });
+//       }
+
+//       // SUCCESS RESPONSE
+//       return res.json({
+//         message: "Password updated successfully",
+//       });
+//     },
+//   });
+// });
 
 module.exports = router;
