@@ -52,17 +52,23 @@ router.post("/login", async (req, res) => {
 
         const user = rows[0];
 
+        const role=user.role || user.ROLE;
+
         // GENERATE APP JWT
         const token = jwt.sign(
           {
             email: user.EMAIL,
             id: user.ID,
+            role: role,
           },
           process.env.JWT_SECRET,
           {
             expiresIn: "1h",
           }
         );
+         
+        console.log("user from db:",user);
+        console.log("ROLE FROM DB:",role );
 
         // SUCCESS RESPONSE
         return res.json({
@@ -72,6 +78,7 @@ router.post("/login", async (req, res) => {
             id: user.ID,
             name: user.NAME,
             email: user.EMAIL,
+            role: user.ROLE,
           },
         });
       },
@@ -134,8 +141,8 @@ router.post("/signup", (req, res) => {
       // INSERT NEW USER
       const insertQuery = `
         INSERT INTO LOGINDETAILS.PUBLIC.USERDETAILS
-        (ID, NAME, EMAIL)
-        VALUES (?, ?, ?)
+        (ID, NAME, EMAIL, ROLE)
+        VALUES (?, ?, ?, 'student')
       `;
 
       const id = Date.now().toString();
