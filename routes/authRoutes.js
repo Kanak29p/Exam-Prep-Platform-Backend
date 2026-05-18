@@ -20,6 +20,8 @@ router.post("/login", async (req, res) => {
 
     const email = decodedToken.email;
 
+    console.log("EMAIL FROM FIREBASE:", email);
+
     // FIND USER IN DATABASE
     const query = `
       SELECT *
@@ -125,7 +127,7 @@ router.post("/signup", (req, res) => {
       if (rows.length > 0) {
         return res.status(200).json({
           message: "User already exists",
-          isNewUser:false;
+          isNewUser:false
         });
       }
 
