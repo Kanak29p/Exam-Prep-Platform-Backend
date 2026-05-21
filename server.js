@@ -5,7 +5,7 @@ require("dotenv").config();
 require("./db/snowflake");
 
 const authRoutes = require("./routes/authRoutes");
-
+const questionRoutes = require("./routes/questionRoutes");
 
 const app = express();
 
@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/questions", questionRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend is running...");
