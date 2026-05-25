@@ -41,6 +41,16 @@ async function login(req, res, next) {
         name: user.NAME,
         email: user.EMAIL,
         role: user.ROLE,
+        phone: user.PHONE || "",
+        location: user.LOCATION || "",
+        targetScore: user.TARGET_SCORE || 0,
+        examDate: user.EXAM_DATE || "",
+        bio: user.BIO || "",
+        avatar: user.AVATAR || "",
+        country: user.COUNTRY || "",
+        state: user.STATE || "",
+        city: user.CITY || "",
+        plan: user.PLAN || "Free",
       },
     });
   } catch (err) {
@@ -92,4 +102,55 @@ async function listStudents(req, res, next) {
   }
 }
 
-module.exports = { login, dashboard, signup, listStudents };
+async function updateProfile(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const { name, phone, location, targetScore, examDate, bio, avatar, country, state, city, plan } = req.body;
+
+    if (!name) {
+      return res.status(400).json({ message: "Name is required" });
+    }
+
+    const user = await userService.updateProfile(userId, {
+      name,
+      phone,
+      location,
+      targetScore,
+      examDate,
+      bio,
+      avatar,
+      country,
+      state,
+      city,
+      plan,
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.json({
+      message: "Profile updated successfully",
+      user: {
+        id: user.ID,
+        name: user.NAME,
+        email: user.EMAIL,
+        role: user.ROLE,
+        phone: user.PHONE || "",
+        location: user.LOCATION || "",
+        targetScore: user.TARGET_SCORE || 0,
+        examDate: user.EXAM_DATE || "",
+        bio: user.BIO || "",
+        avatar: user.AVATAR || "",
+        country: user.COUNTRY || "",
+        state: user.STATE || "",
+        city: user.CITY || "",
+        plan: user.PLAN || "Free",
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { login, dashboard, signup, listStudents, updateProfile };

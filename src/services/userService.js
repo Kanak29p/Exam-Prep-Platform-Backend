@@ -18,7 +18,7 @@ async function createStudent({ id, name, email }) {
 
 async function listStudents() {
   const rows = await query(
-    `SELECT ID, NAME, EMAIL, ROLE, SCORE, PLAN, STATUS, JOINED
+    `SELECT ID, NAME, EMAIL, ROLE, SCORE, PLAN, STATUS, JOINED, PHONE, LOCATION, TARGET_SCORE, EXAM_DATE, BIO, AVATAR, COUNTRY, STATE, CITY
      FROM ${TABLE}
      WHERE ROLE = 'student'`,
   );
@@ -31,7 +31,31 @@ async function listStudents() {
     plan: r.PLAN || "Free",
     status: r.STATUS || "inactive",
     joined: r.JOINED || null,
+    phone: r.PHONE || "",
+    location: r.LOCATION || "",
+    targetScore: r.TARGET_SCORE || 0,
+    examDate: r.EXAM_DATE || "",
+    bio: r.BIO || "",
+    avatar: r.AVATAR || "",
+    country: r.COUNTRY || "",
+    state: r.STATE || "",
+    city: r.CITY || "",
   }));
 }
 
-module.exports = { findByEmail, createStudent, listStudents };
+async function updateProfile(id, { name, phone, location, targetScore, examDate, bio, avatar, country, state, city, plan }) {
+  const sql = `
+    UPDATE ${TABLE}
+    SET NAME = ?, PHONE = ?, LOCATION = ?, TARGET_SCORE = ?, EXAM_DATE = ?, BIO = ?, AVATAR = ?, COUNTRY = ?, STATE = ?, CITY = ?, PLAN = ?
+    WHERE ID = ?
+  `;
+  const dbExamDate = examDate ? examDate : null;
+  const dbTargetScore = isNaN(parseInt(targetScore)) ? null : parseInt(targetScore);
+
+  await query(sql, [name, phone, location, dbTargetScore, dbExamDate, bio, avatar, country, state, city, plan, id]);
+
+  const rows = await query(`SELECT * FROM ${TABLE} WHERE ID = ?`, [id]);
+  return rows[0] || null;
+}
+
+module.exports = { findByEmail, createStudent, listStudents, updateProfile };

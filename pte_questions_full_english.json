@@ -1,0 +1,1345 @@
+{
+  "pte_practice_questions": {
+    "level": "beginner",
+    "modules": [
+      {
+        "id": "speaking_writing",
+        "name": "Speaking & Writing",
+        "submodules": [
+          {
+            "id": 1,
+            "name": "Read Aloud",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Read the text aloud: \"The sun provides energy to all living things on Earth. Without sunlight, plants cannot make food.\"",
+                "hint": "Read clearly and slowly. Focus on pronunciation.",
+                "answer": null
+              },
+              {
+                "id": 2,
+                "question": "Read aloud: \"Every morning, millions of people around the world drink a cup of tea or coffee to start their day.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 3,
+                "question": "Read aloud: \"Water covers more than seventy percent of the Earth's surface, but only a small amount is safe to drink.\"",
+                "hint": "Pronounce numbers clearly - seventy percent.",
+                "answer": null
+              },
+              {
+                "id": 4,
+                "question": "Read aloud: \"Reading books is one of the best ways to improve your vocabulary and expand your knowledge.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 5,
+                "question": "Read aloud: \"The human brain is the most complex organ in the body. It controls all our thoughts and actions.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 6,
+                "question": "Read aloud: \"Doctors recommend at least thirty minutes of exercise every day to maintain good health and reduce stress.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 7,
+                "question": "Read aloud: \"Technology has changed the way people communicate, work, and access information around the globe.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 8,
+                "question": "Read aloud: \"Air pollution is a serious problem in many cities. It is caused mainly by vehicles and factories.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 9,
+                "question": "Read aloud: \"A healthy diet includes fruits, vegetables, proteins, and grains in the right proportions.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 10,
+                "question": "Read aloud: \"Libraries provide free access to books and resources, helping people of all ages to learn and grow.\"",
+                "hint": null,
+                "answer": null
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Repeat Sentence",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Repeat the audio sentence: \"The train will arrive at platform three in five minutes.\"",
+                "hint": "Repeat the complete sentence in one go.",
+                "answer": null
+              },
+              {
+                "id": 2,
+                "question": "Repeat: \"She forgot to bring her umbrella and got wet in the rain.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 3,
+                "question": "Repeat: \"The professor asked all students to submit their assignments by Friday.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 4,
+                "question": "Repeat: \"Please turn off the lights before you leave the room.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 5,
+                "question": "Repeat: \"He has been working at the same company for more than ten years.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 6,
+                "question": "Repeat: \"The new restaurant on the corner serves excellent Italian food.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 7,
+                "question": "Repeat: \"You should drink at least eight glasses of water every day.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 8,
+                "question": "Repeat: \"The museum is open from nine in the morning until six in the evening.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 9,
+                "question": "Repeat: \"Children learn languages much faster than adults.\"",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 10,
+                "question": "Repeat: \"Global temperatures have been rising steadily over the past century.\"",
+                "hint": null,
+                "answer": null
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Describe Image",
+            "questions": [
+              {
+                "id": 1,
+                "question": "A pie chart shows Teen logon ka budget dikha hai: Food 40%, Rent 35%, Others 25%. Describe this image.",
+                "hint": "Structure: The image shows... The largest portion... The smallest...",
+                "answer": "The pie chart shows a person's monthly budget divided into three categories. Food toes the largest share at 40%, followed by rent at 35%, and other expenses at 25%. Overall, food and rent account for most of the spending."
+              },
+              {
+                "id": 2,
+                "question": "A line graph shows 2010 se 2020 to the growth of mobile users — 1 billion se increased to 5 billion ho gaye. Describe.",
+                "hint": null,
+                "answer": "The line graph illustrates the growth of mobile users from 2010 to 2020. The number increased significantly from 1 billion to 5 billion over the decade, showing a steady upward trend. Overall, mobile usage has grown five times in ten years."
+              },
+              {
+                "id": 3,
+                "question": "An image shows ek busy city street dikha hai — cars, people, shops. Describe.",
+                "hint": "Mention: location, objects, activities.",
+                "answer": "The image shows a busy city street with heavy traffic. There are many cars on the road and people walking on the pavement. Several shops and buildings can be seen on both sides of the street, indicating a commercial area."
+              },
+              {
+                "id": 4,
+                "question": "A table shows: Country — Population: India 1.4B, China 1.4B, USA 0.33B. Describe.",
+                "hint": null,
+                "answer": "The table shows the population of three countries. India and China both have the highest population at approximately 1.4 billion each, while the USA has a significantly smaller population of 0.33 billion. Overall, Asian countries dominate in terms of population size."
+              },
+              {
+                "id": 5,
+                "question": "A bar chart shows: Monthly rainfall — Jan 20mm, Feb 15mm, Mar 30mm, Apr 50mm. Describe.",
+                "hint": null,
+                "answer": "The bar chart displays monthly rainfall from January to April. April recorded the highest rainfall at 50mm, while February had the lowest at 15mm. There is a clear upward trend from February to April, suggesting increasing rainfall as the season progresses."
+              },
+              {
+                "id": 6,
+                "question": "An image shows ek student library mein padh raha hai. Describe.",
+                "hint": null,
+                "answer": "The image shows a student studying in a library. The student is sitting at a desk surrounded by books and appears to be focused on reading. The library environment is quiet and well-organised, providing a suitable space for learning."
+              },
+              {
+                "id": 7,
+                "question": "A map shows India ke the states of India. Maharashtra is highlighted. Describe.",
+                "hint": null,
+                "answer": "The image shows a map of India with its states clearly marked. Maharashtra, located on the western coast of India, is highlighted. It is one of the largest states in India and is known for being an economic and cultural hub."
+              },
+              {
+                "id": 8,
+                "question": "A diagram shows the water cycle — evaporation, condensation, precipitation. Describe.",
+                "hint": null,
+                "answer": "The diagram illustrates the water cycle. It shows three main stages: evaporation, where water from oceans and rivers turns into vapour; condensation, where vapour forms clouds; and precipitation, where water falls back to Earth as rain or snow. The cycle then repeats continuously."
+              },
+              {
+                "id": 9,
+                "question": "An image shows solar panels ek ghar ki chhat par lage hain. Describe.",
+                "hint": null,
+                "answer": "The image shows a house with solar panels installed on its roof. The panels are positioned to capture maximum sunlight. This suggests that the household is using renewable energy to generate electricity, which is both environmentally friendly and cost-effective."
+              },
+              {
+                "id": 10,
+                "question": "Ek double bar chart hai: Boys vs Girls — Math score aur Science score compare does. Boys: Math 75, Science 70. Girls: Math 80, Science 85. Describe.",
+                "hint": null,
+                "answer": "The double bar chart compares the Math and Science scores of boys and girls. Girls outperformed boys in both subjects, scoring 80 in Math compared to boys' 75, and 85 in Science compared to boys' 70. Overall, girls achieved higher scores in both academic areas."
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Re-tell Lecture",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio lecture (imagine): A professor talks about climate change — rising temperatures, melting glaciers, and need for renewable energy. Now re-tell this lecture in your own words.",
+                "hint": "Structure: The speaker talked about... He/She mentioned... In conclusion...",
+                "answer": "The speaker discussed climate change, explaining that global temperatures are rising and glaciers are melting as a result. He emphasised the urgent need to switch to renewable energy sources to slow down these effects. In conclusion, the lecture highlighted climate change as one of the most critical issues facing the world today."
+              },
+              {
+                "id": 2,
+                "question": "Lecture: A scientist explains how vaccines work — they train the immune system to fight disease without causing illness. Re-tell.",
+                "hint": null,
+                "answer": "The speaker explained the mechanism of vaccines. According to her, vaccines work by training the body's immune system to recognise and fight specific diseases without actually causing illness. In conclusion, she emphasised that vaccines are a safe and effective way to prevent serious infections."
+              },
+              {
+                "id": 3,
+                "question": "Lecture: A historian describes the importance of the Industrial Revolution in changing society and the economy. Re-tell.",
+                "hint": null,
+                "answer": "The lecturer discussed the Industrial Revolution and its far-reaching impact. He described how it transformed society by shifting populations from rural areas to cities and changing the nature of work. Economically, it led to mass production and the growth of trade. In conclusion, the Industrial Revolution was a turning point in human history."
+              },
+              {
+                "id": 4,
+                "question": "Lecture: A nutritionist explains the benefits of eating a balanced diet with fruits, vegetables, and proteins. Re-tell.",
+                "hint": null,
+                "answer": "The speaker talked about the importance of a balanced diet. She explained that consuming fruits, vegetables, and proteins provides the body with essential nutrients needed for energy, immunity, and muscle repair. In conclusion, she recommended making healthy food choices a daily habit."
+              },
+              {
+                "id": 5,
+                "question": "Lecture: An economist talks about inflation — what causes prices to rise and how it affects ordinary people. Re-tell.",
+                "hint": null,
+                "answer": "The economist discussed inflation, explaining that it occurs when the general level of prices rises over time. He outlined key causes such as excess money supply and high consumer demand. He also explained how inflation reduces the purchasing power of ordinary people. In conclusion, managing inflation is essential for economic stability."
+              },
+              {
+                "id": 6,
+                "question": "Lecture: A teacher explains the water cycle — evaporation, condensation, and precipitation. Re-tell.",
+                "hint": null,
+                "answer": "The teacher explained the water cycle, describing three main stages. First, evaporation occurs when heat causes water to turn into vapour. Then, condensation happens as the vapour cools and forms clouds. Finally, precipitation brings the water back to Earth as rain or snow. In conclusion, the water cycle is a continuous and essential natural process."
+              },
+              {
+                "id": 7,
+                "question": "Lecture: A doctor describes the importance of sleep — 7-8 hours per night for adults for good health. Re-tell.",
+                "hint": null,
+                "answer": "The doctor spoke about the importance of sleep for overall health. She recommended that adults get seven to eight hours of sleep per night. She explained that sleep allows the body to repair itself and the brain to consolidate memories. In conclusion, adequate sleep is essential for both physical and mental wellbeing."
+              },
+              {
+                "id": 8,
+                "question": "Lecture: A professor talks about space exploration — from the first moon landing to modern Mars missions. Re-tell.",
+                "hint": null,
+                "answer": "The professor discussed the history of space exploration. He began with the historic moon landing in 1969 and traced developments to modern missions aimed at exploring Mars. He highlighted how technology has advanced significantly over the decades. In conclusion, space exploration continues to push the boundaries of human knowledge."
+              },
+              {
+                "id": 9,
+                "question": "Lecture: An environmentalist explains deforestation — its causes and effects on wildlife and climate. Re-tell.",
+                "hint": null,
+                "answer": "The environmentalist talked about deforestation, identifying logging, agriculture, and urban expansion as the main causes. She explained that deforestation destroys wildlife habitats and contributes to climate change by releasing stored carbon dioxide. In conclusion, she urged immediate action to protect the world's remaining forests."
+              },
+              {
+                "id": 10,
+                "question": "Lecture: A sociologist discusses how social media has changed human communication and relationships. Re-tell.",
+                "hint": null,
+                "answer": "The sociologist discussed the impact of social media on communication. He noted that it has made it easier for people to connect across distances but has also reduced face-to-face interaction. He mentioned concerns about loneliness and misinformation. In conclusion, social media has both positive and negative effects on human relationships."
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Answer Short Questions",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Question: What do we call the person who flies an airplane?",
+                "hint": "Answer in one or two words.",
+                "answer": "A pilot."
+              },
+              {
+                "id": 2,
+                "question": "Question: How many days are there in a leap year?",
+                "hint": null,
+                "answer": "366 days."
+              },
+              {
+                "id": 3,
+                "question": "Question: What is the capital city of Australia?",
+                "hint": null,
+                "answer": "Canberra."
+              },
+              {
+                "id": 4,
+                "question": "Question: Which gas do plants absorb from the atmosphere during photosynthesis?",
+                "hint": null,
+                "answer": "Carbon dioxide (CO2)."
+              },
+              {
+                "id": 5,
+                "question": "Question: What do we call a word that describes a noun?",
+                "hint": null,
+                "answer": "An adjective."
+              },
+              {
+                "id": 6,
+                "question": "Question: How many sides does a hexagon have?",
+                "hint": null,
+                "answer": "Six sides."
+              },
+              {
+                "id": 7,
+                "question": "Question: What is the main function of the heart?",
+                "hint": null,
+                "answer": "To pump blood through the body."
+              },
+              {
+                "id": 8,
+                "question": "Question: Which planet is closest to the Sun?",
+                "hint": null,
+                "answer": "Mercury."
+              },
+              {
+                "id": 9,
+                "question": "Question: What do we call the process of water turning into vapour?",
+                "hint": null,
+                "answer": "Evaporation."
+              },
+              {
+                "id": 10,
+                "question": "Question: How many continents are there on Earth?",
+                "hint": null,
+                "answer": "Seven."
+              }
+            ]
+          },
+          {
+            "id": 6,
+            "name": "Summarize Written Text",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Paragraph: \"Forests are home to over half of the world's species. They also help regulate the climate by absorbing CO2. However, deforestation is destroying millions of hectares each year, threatening biodiversity.\" Write the summary in one sentence.",
+                "hint": "Summary 1 sentence mein, 5-75 words. Full stop lagao.",
+                "answer": "Forests are vital for biodiversity and climate regulation, but deforestation is rapidly destroying them."
+              },
+              {
+                "id": 2,
+                "question": "Paragraph: \"The internet has revolutionised education by giving students access to information from anywhere in the world. Online courses allow people to learn new skills without attending a physical classroom.\" Summarize.",
+                "hint": null,
+                "answer": "The internet has transformed education by providing global access to information and enabling flexible online learning."
+              },
+              {
+                "id": 3,
+                "question": "Paragraph: \"Exercise has many benefits. It improves cardiovascular health, strengthens muscles, and boosts mental wellbeing. Doctors recommend at least 30 minutes of moderate activity per day.\" Summarize.",
+                "hint": null,
+                "answer": "Regular exercise, recommended at 30 minutes daily, significantly benefits physical and mental health."
+              },
+              {
+                "id": 4,
+                "question": "Paragraph: \"Plastic pollution is a major environmental problem. Millions of tonnes of plastic end up in oceans each year, harming marine life and entering the food chain.\" Summarize.",
+                "hint": null,
+                "answer": "Millions of tonnes of plastic pollute oceans annually, posing serious threats to marine life and the food chain."
+              },
+              {
+                "id": 5,
+                "question": "Paragraph: \"Sleep is essential for good health. During sleep, the body repairs cells and the brain processes information. Lack of sleep leads to poor concentration and weakened immunity.\" Summarize.",
+                "hint": null,
+                "answer": "Sleep is critical for bodily repair and brain function, and insufficient sleep negatively affects concentration and immunity."
+              },
+              {
+                "id": 6,
+                "question": "Paragraph: \"Solar energy is one of the cleanest sources of power. Solar panels convert sunlight into electricity without producing harmful emissions, making it a sustainable alternative to fossil fuels.\" Summarize.",
+                "hint": null,
+                "answer": "Solar energy is a clean, sustainable power source that generates electricity without harmful emissions."
+              },
+              {
+                "id": 7,
+                "question": "Paragraph: \"Smartphones have become an essential part of modern life. They allow people to communicate, shop, navigate, and access entertainment all from a single device.\" Summarize.",
+                "hint": null,
+                "answer": "Smartphones have become indispensable in modern life by combining communication, shopping, navigation, and entertainment in one device."
+              },
+              {
+                "id": 8,
+                "question": "Paragraph: \"Many countries are facing an ageing population problem. As birth rates decline and life expectancy increases, there are fewer young workers to support a growing number of elderly people.\" Summarize.",
+                "hint": null,
+                "answer": "Declining birth rates and increasing life expectancy are creating an ageing population problem, with fewer workers supporting more elderly people."
+              },
+              {
+                "id": 9,
+                "question": "Paragraph: \"Bees are crucial pollinators for many crops. Without bees, many plants cannot reproduce, threatening global food supplies. Pesticides and habitat loss are the main causes of bee population decline.\" Summarize.",
+                "hint": null,
+                "answer": "Bees are essential crop pollinators, but their populations are declining due to pesticides and habitat loss, threatening global food supplies."
+              },
+              {
+                "id": 10,
+                "question": "Paragraph: \"The Great Barrier Reef is the world's largest coral reef system, home to thousands of marine species. Rising ocean temperatures due to climate change are causing widespread coral bleaching.\" Summarize.",
+                "hint": null,
+                "answer": "The Great Barrier Reef, a vital marine ecosystem, is being severely damaged by coral bleaching caused by rising ocean temperatures."
+              }
+            ]
+          },
+          {
+            "id": 7,
+            "name": "Write Essay",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Topic: \"Technology has made people less social. Do you agree or disagree?\" 200-300 words Write your opinion.",
+                "hint": "Structure: Introduction (agree/disagree) → Point 1 → Point 2 → Conclusion",
+                "answer": null
+              },
+              {
+                "id": 2,
+                "question": "Topic: \"University education should be free for all students. Discuss both sides and give your opinion.\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 3,
+                "question": "Topic: \"Cars should be banned from city centres to reduce pollution. Do you agree?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 4,
+                "question": "Topic: \"Working from home is better than working in an office. Do you agree or disagree?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 5,
+                "question": "Topic: \"Children spend too much time on screens. What are the causes and effects of this?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 6,
+                "question": "Topic: \"Some people think that money is the most important factor for happiness. Do you agree?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 7,
+                "question": "Topic: \"Animal testing for medical research is necessary. Discuss both views.\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 8,
+                "question": "Topic: \"Social media does more harm than good. Do you agree or disagree?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 9,
+                "question": "Topic: \"Fast food restaurants are responsible for the rise in obesity. Discuss and give your opinion.\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              },
+              {
+                "id": 10,
+                "question": "Topic: \"Space exploration is a waste of money when there are problems on Earth. Do you agree?\" 200-300 words Write in 200-300 words.",
+                "hint": null,
+                "answer": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reading",
+        "name": "Reading",
+        "submodules": [
+          {
+            "id": 8,
+            "name": "Multiple Choice Single Answer",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Text: \"The Amazon rainforest produces 20% of the world's oxygen and is home to 10% of all species.\" Question: What percentage of global oxygen does the Amazon produce? A) 10%  B) 20%  C) 30%  D) 50%",
+                "hint": "Answer directly text mein mention hai.",
+                "answer": "B) 20%"
+              },
+              {
+                "id": 2,
+                "question": "Text: \"Albert Einstein was born in Germany in 1879. He developed the theory of relativity.\" Question: Where was Einstein born? A) USA  B) UK  C) Germany  D) France",
+                "hint": null,
+                "answer": "C) Germany"
+              },
+              {
+                "id": 3,
+                "question": "Text: \"Honey never expires. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible.\" Question: Why is honey mentioned in the text? A) It is sweet  B) It was used in cooking  C) It does not expire  D) It is expensive",
+                "hint": null,
+                "answer": "C) It does not expire"
+              },
+              {
+                "id": 4,
+                "question": "Text: \"The Great Wall of China stretches over 21,000 kilometres. It was built to protect China from invasions.\" Question: What was the main purpose of the Great Wall? A) Tourism  B) Trade  C) Protection from invasion  D) Communication",
+                "hint": null,
+                "answer": "C) Protection from invasion"
+              },
+              {
+                "id": 5,
+                "question": "Text: \"Recycling reduces waste and saves energy. For example, recycling one ton of paper saves 17 trees.\" Question: How many trees are saved by recycling one ton of paper? A) 7  B) 10  C) 17  D) 70",
+                "hint": null,
+                "answer": "C) 17"
+              },
+              {
+                "id": 6,
+                "question": "Text: \"The heart beats about 100,000 times a day, pumping blood to every part of the body.\" Question: How many times does the heart beat per day? A) 10,000  B) 50,000  C) 100,000  D) 1,000,000",
+                "hint": null,
+                "answer": "C) 100,000"
+              },
+              {
+                "id": 7,
+                "question": "Text: \"Oranges are an excellent source of Vitamin C, which helps boost the immune system.\" Question: What vitamin is found in oranges? A) Vitamin A  B) Vitamin B  C) Vitamin D  D) Vitamin C",
+                "hint": null,
+                "answer": "D) Vitamin C"
+              },
+              {
+                "id": 8,
+                "question": "Text: \"Mount Everest, located in the Himalayas, is the tallest mountain on Earth at 8,849 metres.\" Question: Where is Mount Everest located? A) Andes  B) Alps  C) Himalayas  D) Rockies",
+                "hint": null,
+                "answer": "C) Himalayas"
+              },
+              {
+                "id": 9,
+                "question": "Text: \"Water boils at 100 degrees Celsius at sea level. At higher altitudes, it boils at lower temperatures.\" Question: At what temperature does water boil at sea level? A) 90°C  B) 95°C  C) 100°C  D) 110°C",
+                "hint": null,
+                "answer": "C) 100°C"
+              },
+              {
+                "id": 10,
+                "question": "Text: \"The Eiffel Tower was built in 1889 for the World's Fair in Paris. It is now one of the most visited landmarks in the world.\" Question: Why was the Eiffel Tower built? A) As a permanent monument  B) For the World's Fair  C) For military purposes  D) As a radio tower",
+                "hint": null,
+                "answer": "B) For the World's Fair"
+              }
+            ]
+          },
+          {
+            "id": 9,
+            "name": "Multiple Choice Multiple Answer",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Text: \"Exercise has many benefits. It improves heart health, strengthens muscles, boosts mood, and helps maintain a healthy weight.\" Question: What are benefits of exercise? (Choose 2) A) Improves heart health  B) Makes you taller  C) Boosts mood  D) Reduces hunger",
+                "hint": "2 ya zyada there can be multiple correct answers.",
+                "answer": "A) Improves heart health, C) Boosts mood"
+              },
+              {
+                "id": 2,
+                "question": "Text: \"Smartphones allow users to make calls, browse the internet, toe photos, send messages, and use GPS navigation.\" Question: Which tasks can smartphones perform? (Choose 3) A) Take photos  B) Cook food  C) Send messages  D) Browse internet",
+                "hint": null,
+                "answer": "A) Take photos, C) Send messages, D) Browse internet"
+              },
+              {
+                "id": 3,
+                "question": "Text: \"Climate change is caused by burning fossil fuels, deforestation, and industrial pollution. Its effects include rising sea levels and extreme weather.\" Question: What causes climate change? (Choose 2) A) Burning fossil fuels  B) Planting trees  C) Deforestation  D) Using solar energy",
+                "hint": null,
+                "answer": "A) Burning fossil fuels, C) Deforestation"
+              },
+              {
+                "id": 4,
+                "question": "Text: \"A balanced diet includes carbohydrates for energy, proteins for muscle repair, vitamins for immunity, and minerals for bone health.\" Question: What does a balanced diet include? (Choose 3) A) Carbohydrates  B) Fast food  C) Proteins  D) Vitamins",
+                "hint": null,
+                "answer": "A) Carbohydrates, C) Proteins, D) Vitamins"
+              },
+              {
+                "id": 5,
+                "question": "Text: \"Bees pollinate crops, produce honey, and help maintain biodiversity. Their decline threatens food security.\" Question: What do bees do? (Choose 2) A) Produce honey  B) Cause disease  C) Pollinate crops  D) Destroy forests",
+                "hint": null,
+                "answer": "A) Produce honey, C) Pollinate crops"
+              },
+              {
+                "id": 6,
+                "question": "Text: \"Libraries offer books, internet access, study spaces, and community events. They are free and open to all.\" Question: What do libraries provide? (Choose 3) A) Books  B) Food  C) Internet access  D) Study spaces",
+                "hint": null,
+                "answer": "A) Books, C) Internet access, D) Study spaces"
+              },
+              {
+                "id": 7,
+                "question": "Text: \"Ocean pollution comes from plastic waste, oil spills, and chemical runoff from farms and factories.\" Question: What causes ocean pollution? (Choose 2) A) Plastic waste  B) Wind  C) Oil spills  D) Rain",
+                "hint": null,
+                "answer": "A) Plastic waste, C) Oil spills"
+              },
+              {
+                "id": 8,
+                "question": "Text: \"The benefits of reading include better vocabulary, improved concentration, reduced stress, and expanded knowledge.\" Question: What are benefits of reading? (Choose 3) A) Better vocabulary  B) Improved eyesight  C) Reduced stress  D) Expanded knowledge",
+                "hint": null,
+                "answer": "A) Better vocabulary, C) Reduced stress, D) Expanded knowledge"
+              },
+              {
+                "id": 9,
+                "question": "Text: \"Volcanoes can cause destruction through lava flows, ash clouds, and earthquakes triggered by eruptions.\" Question: How do volcanoes cause harm? (Choose 2) A) Lava flows  B) Heavy rain  C) Ash clouds  D) Flooding",
+                "hint": null,
+                "answer": "A) Lava flows, C) Ash clouds"
+              },
+              {
+                "id": 10,
+                "question": "Text: \"Sleep helps the body heal, consolidates memories, regulates hormones, and improves mood.\" Question: What are benefits of sleep? (Choose 3) A) Body healing  B) Weight loss  C) Memory consolidation  D) Mood improvement",
+                "hint": null,
+                "answer": "A) Body healing, C) Memory consolidation, D) Mood improvement"
+              }
+            ]
+          },
+          {
+            "id": 10,
+            "name": "Reorder Paragraph",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Arrange the sentences in the correct order: A) Add sugar and stir well.  B) Boil water in a kettle.  C) Pour the water into a cup with a tea bag.  D) Remove the tea bag after two minutes.",
+                "hint": "Logical sequence find — kya pehle will happen?",
+                "answer": "B → C → D → A"
+              },
+              {
+                "id": 2,
+                "question": "Correct order: A) Finally, let the cake cool before serving.  B) First, mix flour, eggs, and butter together.  C) Then, pour the batter into a baking tin.  D) Bake in the oven at 180°C for 30 minutes.",
+                "hint": null,
+                "answer": "B → C → D → A"
+              },
+              {
+                "id": 3,
+                "question": "Correct order: A) She paid for the groceries at the counter.  B) She drove to the supermarket.  C) She parked her car in the car park.  D) She collected items from the shelves.",
+                "hint": null,
+                "answer": "B → C → D → A"
+              },
+              {
+                "id": 4,
+                "question": "Correct order: A) The results were analysed by the scientists.  B) A hypothesis was formed.  C) An experiment was designed and conducted.  D) Conclusions were drawn from the data.",
+                "hint": null,
+                "answer": "B → C → A → D"
+              },
+              {
+                "id": 5,
+                "question": "Correct order: A) The audience applauded loudly.  B) The musicians took their seats on stage.  C) The conductor raised his baton.  D) The orchestra began to play.",
+                "hint": null,
+                "answer": "B → C → D → A"
+              },
+              {
+                "id": 6,
+                "question": "Correct order: A) Water is then treated to remove impurities.  B) Rain falls and collects in rivers and reservoirs.  C) Clean water is delivered to homes through pipes.  D) The collected water is transported to treatment plants.",
+                "hint": null,
+                "answer": "B → D → A → C"
+              },
+              {
+                "id": 7,
+                "question": "Correct order: A) Apply the paint evenly using a roller.  B) Let the paint dry completely.  C) Clean the surface and fill any holes.  D) Apply a second coat if needed.",
+                "hint": null,
+                "answer": "C → A → B → D"
+              },
+              {
+                "id": 8,
+                "question": "Correct order: A) The fire spread quickly through the forest.  B) Lightning struck a dry tree.  C) Firefighters were called to contain the blaze.  D) Eventually, the fire was brought under control.",
+                "hint": null,
+                "answer": "B → A → C → D"
+              },
+              {
+                "id": 9,
+                "question": "Correct order: A) The patient was given medication.  B) The doctor examined the patient.  C) The patient described their symptoms.  D) The patient was sent home with instructions.",
+                "hint": null,
+                "answer": "C → B → A → D"
+              },
+              {
+                "id": 10,
+                "question": "Correct order: A) He submitted his job application online.  B) He searched for job openings in his field.  C) He was invited for an interview.  D) He updated his resume.",
+                "hint": null,
+                "answer": "B → D → A → C"
+              }
+            ]
+          },
+          {
+            "id": 11,
+            "name": "Reading Fill in the Blanks",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Choose the correct words (options: absorbs, produces, requires, stores): \"Photosynthesis is the process by which plants ___ sunlight to make food. During this process, the plant ___ oxygen as a by-product.\"",
+                "hint": "Understand from the context — what the plant does with sunlight?",
+                "answer": "absorbs, produces"
+              },
+              {
+                "id": 2,
+                "question": "Options: increases, maintains, reduces, causes: \"Regular exercise ___ the risk of heart disease. It also ___ a healthy body weight.\"",
+                "hint": null,
+                "answer": "reduces, maintains"
+              },
+              {
+                "id": 3,
+                "question": "Options: discovered, invented, founded, created: \"Alexander Fleming ___ penicillin in 1928. This discovery ___ a revolution in medicine.\"",
+                "hint": null,
+                "answer": "discovered, created"
+              },
+              {
+                "id": 4,
+                "question": "Options: covers, contains, flows, surrounds: \"The Pacific Ocean ___ more than 30% of Earth's surface. It ___ some of the world's deepest trenches.\"",
+                "hint": null,
+                "answer": "covers, contains"
+              },
+              {
+                "id": 5,
+                "question": "Options: built, designed, opened, completed: \"The Sydney Opera House was ___ in 1973. It was ___ by Danish architect Jorn Utzon.\"",
+                "hint": null,
+                "answer": "opened, designed"
+              },
+              {
+                "id": 6,
+                "question": "Options: affects, controls, monitors, prevents: \"The brain ___ all body functions. It also ___ our emotions and thoughts.\"",
+                "hint": null,
+                "answer": "controls, affects"
+              },
+              {
+                "id": 7,
+                "question": "Options: grow, survive, reproduce, adapt: \"Animals in the Arctic must ___ to extreme cold. They develop thick fur to ___ in such conditions.\"",
+                "hint": null,
+                "answer": "adapt, survive"
+              },
+              {
+                "id": 8,
+                "question": "Options: launched, sent, carried, placed: \"In 1969, NASA ___ the Apollo 11 mission. The spacecraft ___ three astronauts to the Moon.\"",
+                "hint": null,
+                "answer": "launched, carried"
+              },
+              {
+                "id": 9,
+                "question": "Options: falls, rises, melts, freezes: \"As temperature ___, ice ___ and sea levels increase.\"",
+                "hint": null,
+                "answer": "rises, melts"
+              },
+              {
+                "id": 10,
+                "question": "Options: invented, introduced, developed, created: \"The telephone was ___ by Alexander Graham Bell in 1876. It ___ a completely new way of communication.\"",
+                "hint": null,
+                "answer": "invented, created"
+              }
+            ]
+          },
+          {
+            "id": 12,
+            "name": "Fill in the Blanks Reading & Writing",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Fill in the blanks in the passage (options: however, therefore, although, because): \"Many people prefer coffee ___ it gives them energy. ___, too much caffeine can cause anxiety.\"",
+                "hint": "Linking words — for reason 'because', for contrast 'however'.",
+                "answer": "because, However"
+              },
+              {
+                "id": 2,
+                "question": "Options: significant, minor, common, rare: \"Climate change is a ___ global issue. Its effects are no longer ___ — they are felt everywhere.\"",
+                "hint": null,
+                "answer": "significant, minor"
+              },
+              {
+                "id": 3,
+                "question": "Options: despite, due to, because of, in addition to: \"___ advances in medicine, many diseases remain incurable. ___ this, researchers continue to work on new treatments.\"",
+                "hint": null,
+                "answer": "Despite, Despite / However"
+              },
+              {
+                "id": 4,
+                "question": "Options: rapidly, slowly, carefully, quietly: \"The world's population is growing ___. Cities are expanding ___ to accommodate more people.\"",
+                "hint": null,
+                "answer": "rapidly, rapidly"
+              },
+              {
+                "id": 5,
+                "question": "Options: protect, destroy, support, ignore: \"Governments must ___ the environment by creating laws that ___ pollution and deforestation.\"",
+                "hint": null,
+                "answer": "protect, prevent"
+              },
+              {
+                "id": 6,
+                "question": "Options: essential, optional, harmful, unnecessary: \"Vaccination is ___ for public health. Without it, deadly diseases could spread ___ through communities.\"",
+                "hint": null,
+                "answer": "essential, rapidly"
+              },
+              {
+                "id": 7,
+                "question": "Options: consequently, previously, meanwhile, eventually: \"The company faced financial difficulties. ___, it had to lay off many workers. ___, it recovered and grew stronger.\"",
+                "hint": null,
+                "answer": "Consequently, Eventually"
+              },
+              {
+                "id": 8,
+                "question": "Options: majority, minority, number, amount: \"The ___ of students passed the exam. Only a small ___ failed, mostly due to lack of preparation.\"",
+                "hint": null,
+                "answer": "majority, minority"
+              },
+              {
+                "id": 9,
+                "question": "Options: ancient, modern, recent, early: \"___ civilisations built remarkable structures without ___ technology. Their achievements remain impressive today.\"",
+                "hint": null,
+                "answer": "Ancient, modern"
+              },
+              {
+                "id": 10,
+                "question": "Options: maintains, improves, damages, reduces: \"A balanced diet ___ overall health. Poor eating habits, however, ___ important organs over time.\"",
+                "hint": null,
+                "answer": "improves, damage"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "listening",
+        "name": "Listening",
+        "submodules": [
+          {
+            "id": 13,
+            "name": "Summarize Spoken Text",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio summary: A professor explains how earthquakes occur — tectonic plates shift and release energy. He discusses the Richter scale and how buildings can be made earthquake-proof. 50-70 words mein write the summary.",
+                "hint": "Key points pakdo: topic, main ideas, conclusion.",
+                "answer": "The lecture explained the causes of earthquakes, noting that they occur when tectonic plates shift and release energy. The speaker described the Richter scale as a tool for measuring earthquake intensity. He also discussed how modern buildings can be designed to withstand earthquakes, emphasising the importance of earthquake-proof construction in vulnerable regions."
+              },
+              {
+                "id": 2,
+                "question": "Audio: A nutritionist talks about the Mediterranean diet — rich in olive oil, fish, vegetables, and whole grains. She explains its health benefits: reduced heart disease and longer life expectancy. Summary write.",
+                "hint": null,
+                "answer": "The speaker discussed the Mediterranean diet, which is based on olive oil, fish, vegetables, and whole grains. She highlighted its significant health benefits, including a reduced risk of heart disease and increased life expectancy, recommending it as a healthy lifestyle choice."
+              },
+              {
+                "id": 3,
+                "question": "Audio: A historian describes the fall of the Roman Empire — weak leadership, economic problems, and invasions by Germanic tribes. Summary write.",
+                "hint": null,
+                "answer": "The lecture covered the fall of the Roman Empire, attributing it to several factors including weak political leadership, economic decline, and repeated invasions by Germanic tribes, all of which contributed to its eventual collapse."
+              },
+              {
+                "id": 4,
+                "question": "Audio: A scientist explains DNA — it carries genetic information, is found in every cell, and determines physical traits. Summary write.",
+                "hint": null,
+                "answer": "The speaker explained that DNA carries genetic information and is present in every cell of the body. It determines physical characteristics such as eye colour and height, making it fundamental to understanding genetics and heredity."
+              },
+              {
+                "id": 5,
+                "question": "Audio: An economist discusses inflation — when prices rise and money loses value. He mentions causes: excess money supply and high demand. Summary write.",
+                "hint": null,
+                "answer": "The lecture addressed inflation, describing it as the process by which prices rise and the purchasing power of money decreases. The speaker identified the main causes as an excess money supply and high consumer demand."
+              },
+              {
+                "id": 6,
+                "question": "Audio: A conservationist talks about endangered species — habitat destruction and poaching are the main threats. She urges stronger protection laws. Summary write.",
+                "hint": null,
+                "answer": "The speaker discussed the threat to endangered species, identifying habitat destruction and illegal poaching as the primary causes. She called for stronger conservation laws and greater international cooperation to protect vulnerable animal populations."
+              },
+              {
+                "id": 7,
+                "question": "Audio: A teacher explains the scientific method — observation, hypothesis, experiment, analysis, and conclusion. Summary write.",
+                "hint": null,
+                "answer": "The lecture outlined the scientific method, describing its five key stages: observation, forming a hypothesis, conducting experiments, analysing results, and drawing conclusions. The speaker emphasised that this process is fundamental to all scientific research."
+              },
+              {
+                "id": 8,
+                "question": "Audio: A journalist talks about fake news — how it spreads on social media and its impact on public opinion. Summary write.",
+                "hint": null,
+                "answer": "The speaker discussed the problem of fake news, explaining how it spreads rapidly through social media platforms and distorts public opinion. He stressed the importance of critical thinking and checking sources before sharing information."
+              },
+              {
+                "id": 9,
+                "question": "Audio: A doctor explains the importance of mental health — stress management, sleep, exercise, and social connections all matter. Summary write.",
+                "hint": null,
+                "answer": "The lecture focused on mental health, with the doctor highlighting four key factors: managing stress, getting adequate sleep, regular exercise, and maintaining strong social connections. She argued that mental health deserves the same attention as physical health."
+              },
+              {
+                "id": 10,
+                "question": "Audio: An architect describes sustainable building design — using solar panels, rainwater harvesting, and natural ventilation to reduce energy use. Summary write.",
+                "hint": null,
+                "answer": "The speaker described sustainable building design, explaining how features such as solar panels, rainwater harvesting systems, and natural ventilation can significantly reduce a building's energy consumption and environmental impact."
+              }
+            ]
+          },
+          {
+            "id": 14,
+            "name": "MCQ Single Answer",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: \"The pharmacy closes at 8 PM on weekdays and at 5 PM on Sundays.\" Question: When does the pharmacy close on Sunday? A) 8 PM  B) 5 PM  C) 6 PM  D) 7 PM",
+                "hint": "Answer audio mein directly bola gaya hai.",
+                "answer": "B) 5 PM"
+              },
+              {
+                "id": 2,
+                "question": "Audio: \"The conference will be held in Hall B, not Hall A as previously announced.\" Question: Where will the conference be held? A) Hall A  B) Hall C  C) Hall B  D) Hall D",
+                "hint": null,
+                "answer": "C) Hall B"
+              },
+              {
+                "id": 3,
+                "question": "Audio: \"Students must return their library books within two weeks or pay a fine of one dollar per day.\" Question: What is the fine per day for late returns? A) Two dollars  B) Five dollars  C) Fifty cents  D) One dollar",
+                "hint": null,
+                "answer": "D) One dollar"
+              },
+              {
+                "id": 4,
+                "question": "Audio: \"The flight to Dubai departs at 3:45 AM from Terminal 2.\" Question: From which terminal does the flight depart? A) Terminal 1  B) Terminal 3  C) Terminal 2  D) Terminal 4",
+                "hint": null,
+                "answer": "C) Terminal 2"
+              },
+              {
+                "id": 5,
+                "question": "Audio: \"The workshop is open to all staff members, but registration is required by Thursday.\" Question: By when must staff register? A) Monday  B) Wednesday  C) Friday  D) Thursday",
+                "hint": null,
+                "answer": "D) Thursday"
+              },
+              {
+                "id": 6,
+                "question": "Audio: \"Scientists have found that drinking green tea daily can reduce the risk of heart disease by 20%.\" Question: By how much can green tea reduce heart disease risk? A) 10%  B) 30%  C) 20%  D) 50%",
+                "hint": null,
+                "answer": "C) 20%"
+              },
+              {
+                "id": 7,
+                "question": "Audio: \"The museum admission is free for children under 12 and for senior citizens over 65.\" Question: Who gets free admission? A) All students  B) Children under 12 only  C) Children under 12 and seniors over 65  D) Everyone",
+                "hint": null,
+                "answer": "C) Children under 12 and seniors over 65"
+              },
+              {
+                "id": 8,
+                "question": "Audio: \"The company was founded in 1995 by two university graduates with a small loan.\" Question: When was the company founded? A) 1985  B) 2005  C) 1995  D) 1975",
+                "hint": null,
+                "answer": "C) 1995"
+              },
+              {
+                "id": 9,
+                "question": "Audio: \"Please note that the swimming pool will be closed for maintenance every Monday morning from 6 AM to 10 AM.\" Question: When is the pool closed for maintenance? A) Every Sunday morning  B) Every Monday morning  C) Every Tuesday morning  D) Every Friday morning",
+                "hint": null,
+                "answer": "B) Every Monday morning"
+              },
+              {
+                "id": 10,
+                "question": "Audio: \"The recommended dosage is two tablets twice daily, toen with food.\" Question: How often should the tablets be toen? A) Once daily  B) Three times daily  C) With every meal  D) Twice daily",
+                "hint": null,
+                "answer": "D) Twice daily"
+              }
+            ]
+          },
+          {
+            "id": 15,
+            "name": "MCQ Multiple Answer",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: \"To apply for the scholarship, students must submit their academic transcript, two reference letters, and a personal statement.\" Question: What must students submit? (Choose 2) A) Academic transcript  B) Passport copy  C) Two reference letters  D) Bank statement",
+                "hint": "Listen carefully — multiple things may be mentioned.",
+                "answer": "A) Academic transcript, C) Two reference letters"
+              },
+              {
+                "id": 2,
+                "question": "Audio: \"The new health guidelines recommend eating more vegetables, reducing sugar intoe, and exercising at least 5 days a week.\" Question: What do the guidelines recommend? (Choose 2) A) Eating more vegetables  B) Drinking more coffee  C) Reducing sugar intoe  D) Sleeping 10 hours",
+                "hint": null,
+                "answer": "A) Eating more vegetables, C) Reducing sugar intoe"
+              },
+              {
+                "id": 3,
+                "question": "Audio: \"The city council decided to build more parks, improve public transport, and reduce traffic in the city centre.\" Question: What did the council decide? (Choose 3) A) Build more parks  B) Close schools  C) Improve public transport  D) Reduce traffic",
+                "hint": null,
+                "answer": "A) Build more parks, C) Improve public transport, D) Reduce traffic"
+              },
+              {
+                "id": 4,
+                "question": "Audio: \"Climate scientists warn that sea levels are rising, extreme weather is increasing, and Arctic ice is melting faster than ever.\" Question: What are the scientists warning about? (Choose 2) A) Rising sea levels  B) Cleaner air  C) Melting Arctic ice  D) Falling temperatures",
+                "hint": null,
+                "answer": "A) Rising sea levels, C) Melting Arctic ice"
+              },
+              {
+                "id": 5,
+                "question": "Audio: \"The new employee benefits package includes health insurance, a pension plan, flexible working hours, and 25 days annual leave.\" Question: What benefits are included? (Choose 3) A) Health insurance  B) Free meals  C) Pension plan  D) Flexible working hours",
+                "hint": null,
+                "answer": "A) Health insurance, C) Pension plan, D) Flexible working hours"
+              },
+              {
+                "id": 6,
+                "question": "Audio: \"The report found that air pollution, poor diet, and lack of exercise are the leading causes of preventable death.\" Question: What are leading causes of preventable death? (Choose 2) A) Air pollution  B) Ageing  C) Poor diet  D) Genetics",
+                "hint": null,
+                "answer": "A) Air pollution, C) Poor diet"
+              },
+              {
+                "id": 7,
+                "question": "Audio: \"The university offers programmes in engineering, medicine, law, business, and arts.\" Question: Which programmes are offered? (Choose 3) A) Engineering  B) Agriculture  C) Medicine  D) Law",
+                "hint": null,
+                "answer": "A) Engineering, C) Medicine, D) Law"
+              },
+              {
+                "id": 8,
+                "question": "Audio: \"Deforestation leads to loss of biodiversity, soil erosion, and increased carbon emissions.\" Question: What does deforestation lead to? (Choose 2) A) Loss of biodiversity  B) More rainfall  C) Soil erosion  D) Cooler temperatures",
+                "hint": null,
+                "answer": "A) Loss of biodiversity, C) Soil erosion"
+              },
+              {
+                "id": 9,
+                "question": "Audio: \"The restaurant was praised for its excellent food, friendly staff, and beautiful interior design.\" Question: What was praised? (Choose 3) A) Excellent food  B) Low prices  C) Friendly staff  D) Beautiful interior",
+                "hint": null,
+                "answer": "A) Excellent food, C) Friendly staff, D) Beautiful interior"
+              },
+              {
+                "id": 10,
+                "question": "Audio: \"The new phone features a longer battery life, an improved camera, and a faster processor.\" Question: What are the phone's new features? (Choose 2) A) Longer battery life  B) Larger screen  C) Improved camera  D) Cheaper price",
+                "hint": null,
+                "answer": "A) Longer battery life, C) Improved camera"
+              }
+            ]
+          },
+          {
+            "id": 16,
+            "name": "Listening Fill in the Blanks",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: \"The capital of France is ___, and the currency used there is the ___.\"",
+                "hint": "Write exactly what is spoken.",
+                "answer": "Paris, Euro"
+              },
+              {
+                "id": 2,
+                "question": "Audio: \"Water freezes at ___ degrees Celsius and boils at ___ degrees Celsius.\"",
+                "hint": null,
+                "answer": "0, 100"
+              },
+              {
+                "id": 3,
+                "question": "Audio: \"The Great Wall of China is over ___ kilometres long and was built to protect against ___.\"",
+                "hint": null,
+                "answer": "21,000, invasions"
+              },
+              {
+                "id": 4,
+                "question": "Audio: \"Students are required to submit their ___ by Friday and attend a ___ on Monday morning.\"",
+                "hint": null,
+                "answer": "assignments, presentation"
+              },
+              {
+                "id": 5,
+                "question": "Audio: \"The doctor advised the patient to drink more ___ and get at least ___ hours of sleep per night.\"",
+                "hint": null,
+                "answer": "water, eight"
+              },
+              {
+                "id": 6,
+                "question": "Audio: \"The Amazon River is the largest river in the world by ___, flowing through the ___ rainforest.\"",
+                "hint": null,
+                "answer": "volume, Amazon"
+              },
+              {
+                "id": 7,
+                "question": "Audio: \"Please bring your ___ card and one form of ___ to the registration desk.\"",
+                "hint": null,
+                "answer": "student, identification"
+              },
+              {
+                "id": 8,
+                "question": "Audio: \"The meeting has been rescheduled from ___ to ___ due to a conflict in the conference room.\"",
+                "hint": null,
+                "answer": "Monday, Wednesday"
+              },
+              {
+                "id": 9,
+                "question": "Audio: \"Recycling paper saves ___ and reduces the need to cut down ___.\"",
+                "hint": null,
+                "answer": "energy, trees"
+              },
+              {
+                "id": 10,
+                "question": "Audio: \"The human body is made up of approximately ___ trillion cells, each performing a specific ___.\"",
+                "hint": null,
+                "answer": "37, function"
+              }
+            ]
+          },
+          {
+            "id": 17,
+            "name": "Highlight Correct Summary",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: A speaker talks about the benefits of cycling — it is environmentally friendly, improves fitness, and saves money on transport costs. Choose the correct summary: A) Cycling is dangerous and expensive  B) Cycling benefits the environment, health, and finances  C) Cycling should be banned in cities  D) Cycling is only good for children",
+                "hint": "The summary should cover the main points of the audio.",
+                "answer": "B) Cycling benefits the environment, health, and finances"
+              },
+              {
+                "id": 2,
+                "question": "Audio: A professor explains that artificial intelligence is being used in hospitals to diagnose diseases more accurately and quickly than humans. correct summary: A) AI is replacing all doctors  B) AI is harmful to patients  C) AI improves disease diagnosis in hospitals  D) AI is only used in research labs",
+                "hint": null,
+                "answer": "C) AI improves disease diagnosis in hospitals"
+              },
+              {
+                "id": 3,
+                "question": "Audio: A journalist reports that global plastic production has doubled in the past 20 years, causing serious harm to ocean ecosystems. correct summary: A) Plastic helps protect oceans  B) Plastic production has declined  C) Doubled plastic production is severely damaging ocean ecosystems  D) Oceans are clean and unpolluted",
+                "hint": null,
+                "answer": "C) Doubled plastic production is severely damaging ocean ecosystems"
+              },
+              {
+                "id": 4,
+                "question": "Audio: A nutritionist says that skipping breakfast leads to lower concentration, poor mood, and overeating later in the day. correct summary: A) Breakfast is not important  B) Skipping breakfast causes several negative effects on health and behaviour  C) People should skip dinner instead  D) Breakfast should be the smallest meal",
+                "hint": null,
+                "answer": "B) Skipping breakfast causes several negative effects on health and behaviour"
+              },
+              {
+                "id": 5,
+                "question": "Audio: A scientist explains that bees are declining because of pesticide use, habitat loss, and climate change, threatening crop production. correct summary: A) Bees are increasing in number  B) Bees cause crop failures  C) Declining bee populations, driven by human activities, threaten agriculture  D) Pesticides help bees survive",
+                "hint": null,
+                "answer": "C) Declining bee populations, driven by human activities, threaten agriculture"
+              },
+              {
+                "id": 6,
+                "question": "Audio: A historian says the printing press, invented by Gutenberg, made books affordable and spread knowledge across Europe. correct summary: A) Gutenberg destroyed the book industry  B) The printing press made books expensive  C) Gutenberg's printing press democratised knowledge in Europe  D) Books were already available before the printing press",
+                "hint": null,
+                "answer": "C) Gutenberg's printing press democratised knowledge in Europe"
+              },
+              {
+                "id": 7,
+                "question": "Audio: A teacher explains that learning a second language improves cognitive abilities, memory, and problem-solving skills. correct summary: A) Learning languages wastes time  B) Only children can learn second languages  C) Bilingualism enhances brain function and cognitive skills  D) Languages are not useful in modern life",
+                "hint": null,
+                "answer": "C) Bilingualism enhances brain function and cognitive skills"
+              },
+              {
+                "id": 8,
+                "question": "Audio: An economist warns that rising inequality between rich and poor is increasing social tensions and reducing economic growth. correct summary: A) Inequality is decreasing globally  B) Rising wealth inequality creates social and economic problems  C) The rich and poor have equal opportunities  D) Economic growth is strong worldwide",
+                "hint": null,
+                "answer": "B) Rising wealth inequality creates social and economic problems"
+              },
+              {
+                "id": 9,
+                "question": "Audio: A doctor explains that stress causes high blood pressure, weakens the immune system, and disrupts sleep. correct summary: A) Stress has no physical effects  B) Stress only affects mental health  C) Stress leads to multiple physical health problems  D) Stress is beneficial in all situations",
+                "hint": null,
+                "answer": "C) Stress leads to multiple physical health problems"
+              },
+              {
+                "id": 10,
+                "question": "Audio: A conservationist argues that national parks are essential for protecting wildlife and providing recreational space for people. correct summary: A) National parks should be converted to farmland  B) Wildlife does not need protection  C) National parks protect wildlife and benefit people through recreation  D) Parks are too expensive to maintain",
+                "hint": null,
+                "answer": "C) National parks protect wildlife and benefit people through recreation"
+              }
+            ]
+          },
+          {
+            "id": 18,
+            "name": "Select Missing Word",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: \"Scientists believe that regular meditation can significantly reduce stress and improve overall mental ___\" Options: A) fitness  B) health  C) strength  D) speed",
+                "hint": "Guess from the context — which missing word makes sense?",
+                "answer": "B) health"
+              },
+              {
+                "id": 2,
+                "question": "Audio: \"The new bridge took five years to build and cost more than two billion ___\" A) dollars  B) tonnes  C) workers  D) metres",
+                "hint": null,
+                "answer": "A) dollars"
+              },
+              {
+                "id": 3,
+                "question": "Audio: \"Doctors now recommend that patients avoid processed foods high in salt and ___\" A) vitamins  B) protein  C) sugar  D) fibre",
+                "hint": null,
+                "answer": "C) sugar"
+              },
+              {
+                "id": 4,
+                "question": "Audio: \"The airline announced that all flights would be delayed due to severe ___\" A) delays  B) weather  C) passengers  D) maintenance",
+                "hint": null,
+                "answer": "B) weather"
+              },
+              {
+                "id": 5,
+                "question": "Audio: \"The government plans to invest heavily in renewable energy to reduce its carbon ___\" A) tax  B) output  C) footprint  D) income",
+                "hint": null,
+                "answer": "C) footprint"
+              },
+              {
+                "id": 6,
+                "question": "Audio: \"The ancient ruins were discovered by archaeologists working in a remote part of the ___\" A) city  B) museum  C) desert  D) library",
+                "hint": null,
+                "answer": "C) desert"
+              },
+              {
+                "id": 7,
+                "question": "Audio: \"Studies show that people who read regularly have a stronger vocabulary and better critical ___\" A) memory  B) thinking  C) vision  D) speed",
+                "hint": null,
+                "answer": "B) thinking"
+              },
+              {
+                "id": 8,
+                "question": "Audio: \"The company reported record profits this year, thanks to strong sales in Asian ___\" A) offices  B) markets  C) countries  D) products",
+                "hint": null,
+                "answer": "B) markets"
+              },
+              {
+                "id": 9,
+                "question": "Audio: \"Researchers found that social media use late at night negatively affects the quality of ___\" A) food  B) work  C) sleep  D) exercise",
+                "hint": null,
+                "answer": "C) sleep"
+              },
+              {
+                "id": 10,
+                "question": "Audio: \"The new policy requires all employees to complete a training programme before starting their ___\" A) lunch  B) salary  C) holiday  D) role",
+                "hint": null,
+                "answer": "D) role"
+              }
+            ]
+          },
+          {
+            "id": 19,
+            "name": "Highlight Incorrect Word",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Audio: \"The cat sat quietly on the wooden chair.\" Text: \"The cat sat quietly on the wooden table.\" Which word is incorrect?",
+                "hint": "Compare the audio and text word by word.",
+                "answer": "table (audio mein 'chair' tha)"
+              },
+              {
+                "id": 2,
+                "question": "Audio: \"She walked slowly through the park every morning.\" Text: \"She walked quickly through the park every morning.\" incorrect word?",
+                "hint": null,
+                "answer": "quickly (audio mein 'slowly' tha)"
+              },
+              {
+                "id": 3,
+                "question": "Audio: \"The students completed their homework before dinner.\" Text: \"The students completed their project before dinner.\" incorrect word?",
+                "hint": null,
+                "answer": "project (audio mein 'homework' tha)"
+              },
+              {
+                "id": 4,
+                "question": "Audio: \"He bought a blue jacket from the market yesterday.\" Text: \"He bought a black jacket from the market yesterday.\" incorrect word?",
+                "hint": null,
+                "answer": "black (audio mein 'blue' tha)"
+              },
+              {
+                "id": 5,
+                "question": "Audio: \"The museum opens at nine o'clock every day except Monday.\" Text: \"The museum opens at ten o'clock every day except Monday.\" incorrect word?",
+                "hint": null,
+                "answer": "ten (audio mein 'nine' tha)"
+              },
+              {
+                "id": 6,
+                "question": "Audio: \"Scientists discovered a new species of fish in the Pacific Ocean.\" Text: \"Scientists discovered a new species of bird in the Pacific Ocean.\" incorrect word?",
+                "hint": null,
+                "answer": "bird (audio mein 'fish' tha)"
+              },
+              {
+                "id": 7,
+                "question": "Audio: \"The temperature dropped to minus five degrees last night.\" Text: \"The temperature dropped to minus fifteen degrees last night.\" incorrect word?",
+                "hint": null,
+                "answer": "fifteen (audio mein 'five' tha)"
+              },
+              {
+                "id": 8,
+                "question": "Audio: \"She received a letter from her friend in Canada.\" Text: \"She received a letter from her friend in Australia.\" incorrect word?",
+                "hint": null,
+                "answer": "Australia (audio mein 'Canada' tha)"
+              },
+              {
+                "id": 9,
+                "question": "Audio: \"The train arrives at platform seven at noon.\" Text: \"The train arrives at platform eleven at noon.\" incorrect word?",
+                "hint": null,
+                "answer": "eleven (audio mein 'seven' tha)"
+              },
+              {
+                "id": 10,
+                "question": "Audio: \"He saved money for three years to buy a new car.\" Text: \"He saved money for five years to buy a new car.\" incorrect word?",
+                "hint": null,
+                "answer": "five (audio mein 'three' tha)"
+              }
+            ]
+          },
+          {
+            "id": 20,
+            "name": "Write from Dictation",
+            "questions": [
+              {
+                "id": 1,
+                "question": "Listen to the audio sentence and write it exactly: \"The children played happily in the garden all afternoon.\"",
+                "hint": "Write exactly what you hear — Keep spelling and punctuation correct.",
+                "answer": "The children played happily in the garden all afternoon."
+              },
+              {
+                "id": 2,
+                "question": "Write: \"She has been studying English for more than two years.\"",
+                "hint": null,
+                "answer": "She has been studying English for more than two years."
+              },
+              {
+                "id": 3,
+                "question": "Write: \"The scientists announced their discovery at the international conference.\"",
+                "hint": null,
+                "answer": "The scientists announced their discovery at the international conference."
+              },
+              {
+                "id": 4,
+                "question": "Write: \"Please submit your application before the deadline on Friday.\"",
+                "hint": null,
+                "answer": "Please submit your application before the deadline on Friday."
+              },
+              {
+                "id": 5,
+                "question": "Write: \"Global warming is one of the most serious challenges facing humanity today.\"",
+                "hint": null,
+                "answer": "Global warming is one of the most serious challenges facing humanity today."
+              },
+              {
+                "id": 6,
+                "question": "Write: \"The new library will open to the public next month after years of construction.\"",
+                "hint": null,
+                "answer": "The new library will open to the public next month after years of construction."
+              },
+              {
+                "id": 7,
+                "question": "Write: \"Doctors recommend eating a variety of fresh fruits and vegetables every day.\"",
+                "hint": null,
+                "answer": "Doctors recommend eating a variety of fresh fruits and vegetables every day."
+              },
+              {
+                "id": 8,
+                "question": "Write: \"He missed the bus and had to walk to the office in the rain.\"",
+                "hint": null,
+                "answer": "He missed the bus and had to walk to the office in the rain."
+              },
+              {
+                "id": 9,
+                "question": "Write: \"The results of the experiment were unexpected and required further investigation.\"",
+                "hint": null,
+                "answer": "The results of the experiment were unexpected and required further investigation."
+              },
+              {
+                "id": 10,
+                "question": "Write: \"All passengers must show their boarding pass before entering the departure gate.\"",
+                "hint": null,
+                "answer": "All passengers must show their boarding pass before entering the departure gate."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

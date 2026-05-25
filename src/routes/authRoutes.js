@@ -4,6 +4,7 @@ const ctrl = require("../controllers/authController");
 
 const router = express.Router();
 
+router.put("/profile", verifyToken, ctrl.updateProfile);
 router.post("/login", ctrl.login);
 router.post("/signup", ctrl.signup);
 router.get("/dashboard", verifyToken, ctrl.dashboard);

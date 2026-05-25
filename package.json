@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "import:questions": "node scripts/import_questions.js",
+    "import:questions": "node insertQuestions.js",
     "test:query": "node scripts/test_query.js"
   },
   "keywords": [],
