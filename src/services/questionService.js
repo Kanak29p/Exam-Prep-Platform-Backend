@@ -70,4 +70,26 @@ async function findById(id) {
   return row;
 }
 
-module.exports = { findByCategory, listSections, findById };
+async function submitAnswer({ userId, questionId, audioUrl, answerText, score, feedback }) {
+  const sql = `
+    INSERT INTO PTE_EXAM_PREP_PLATFORM.PUBLIC.STUDENT_RESPONSES (
+      USER_ID,
+      QUESTION_ID,
+      AUDIO_URL,
+      ANSWER_TEXT,
+      SCORE,
+      FEEDBACK,
+      SUBMITTED_AT
+    ) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP())
+  `;
+  return query(sql, [
+    userId,
+    questionId,
+    audioUrl || null,
+    answerText || null,
+    score !== undefined ? score : null,
+    feedback || null
+  ]);
+}
+
+module.exports = { findByCategory, listSections, findById, submitAnswer };
