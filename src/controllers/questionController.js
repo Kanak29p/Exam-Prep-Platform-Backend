@@ -63,7 +63,16 @@ async function submitAnswer(req, res, next) {
     const isReading = categoryLower === "reading";
     const isListening = categoryLower === "listening";
 
-    if (isSpeaking) {
+    const subCat = (question.SUB_CATEGORY || "").toLowerCase();
+    const isPersonalIntro = subCat.includes("personal introduction");
+
+    if (isPersonalIntro) {
+      finalScore = 90;
+      finalFeedback = "Your personal introduction has been recorded. Note: Personal Introduction is not scored in the actual PTE exam.";
+      accuracy = 100;
+      matchedWords = [];
+      missedWords = [];
+    } else if (isSpeaking) {
       const targetText = getTargetText(question.QUESTION_TEXT, question.CORRECT_ANSWER);
       const evalResult = evaluateSpeech(answerText, targetText);
       finalScore = evalResult.score;
@@ -73,8 +82,45 @@ async function submitAnswer(req, res, next) {
       missedWords = evalResult.missedWords;
     } else if (isWriting) {
       const wordCount = (answerText || "").trim().split(/\s+/).filter(Boolean).length;
-      finalScore = 90;
-      finalFeedback = `Response successfully recorded. Word count: ${wordCount}`;
+      const subCat = (question.SUB_CATEGORY || "").toLowerCase();
+      let minWords = 200;
+      let maxWords = 300;
+      let isSummary = subCat.includes("summarize") || subCat.includes("summary");
+      if (isSummary) {
+        minWords = 5;
+        maxWords = 75;
+      }
+      
+      const wordCountOk = wordCount >= minWords && wordCount <= maxWords;
+      
+      let sentenceCountOk = true;
+      if (isSummary) {
+        const sentences = (answerText || "").trim().split(/[.!?]+/).filter((s) => s.trim().length > 0);
+        if (sentences.length !== 1) {
+          sentenceCountOk = false;
+        }
+      }
+
+      if (wordCount === 0) {
+        finalScore = 10;
+        finalFeedback = "No response submitted.";
+        accuracy = 0;
+      } else if (wordCountOk && sentenceCountOk) {
+        finalScore = 90;
+        finalFeedback = `Excellent! Your response met the word count criteria (${wordCount} words) and sentence structure constraints.`;
+        accuracy = 100;
+      } else {
+        let penalty = 0;
+        if (!wordCountOk) penalty += 30;
+        if (!sentenceCountOk) penalty += 20;
+        finalScore = Math.max(10, 90 - penalty);
+        accuracy = Math.max(10, 100 - penalty);
+        
+        let feedback = `Response recorded. Word count: ${wordCount} (Target: ${minWords}-${maxWords}). `;
+        if (!wordCountOk) feedback += `Word count is outside the target range. `;
+        if (isSummary && !sentenceCountOk) feedback += `Your summary must be exactly one sentence. `;
+        finalFeedback = feedback.trim();
+      }
     } else if (isReading || isListening) {
       const evalResult = evaluateReadingOrListening(question, answerText);
       finalScore = evalResult.score;
@@ -206,10 +252,16 @@ function evaluateReadingOrListening(question, answerText) {
   const isFitb = subCat.includes("fill in");
 
   if (isMcqSingle) {
-    const uClean = cleanOption(userAnswer);
-    const cClean = cleanOption(correctAnswer);
+    const uCleanLetter = cleanOption(userAnswer);
+    const cCleanLetter = cleanOption(correctAnswer);
 
-    if (uClean === cClean || uClean.startsWith(cClean) || cClean.startsWith(uClean)) {
+    const uCleanText = cleanTextSimple(stripOptionPrefix(userAnswer));
+    const cCleanText = cleanTextSimple(stripOptionPrefix(correctAnswer));
+
+    const letterMatch = uCleanLetter && cCleanLetter && uCleanLetter === cCleanLetter;
+    const textMatch = uCleanText && cCleanText && uCleanText === cCleanText;
+
+    if (letterMatch || textMatch) {
       return {
         score: 90,
         accuracy: 100,
@@ -225,20 +277,38 @@ function evaluateReadingOrListening(question, answerText) {
   }
 
   if (isMcqMultiple) {
-    const uOptions = splitAnswers(userAnswer);
-    const cOptions = splitAnswers(correctAnswer);
+    const uParts = (userAnswer || "").split(",").map(s => s.trim()).filter(Boolean);
+    const cParts = (correctAnswer || "").split(",").map(s => s.trim()).filter(Boolean);
 
     let matchCount = 0;
-    uOptions.forEach(opt => {
-      if (cOptions.includes(opt)) matchCount++;
+    uParts.forEach(uPart => {
+      const uCleanLetter = cleanOption(uPart);
+      const uCleanText = cleanTextSimple(stripOptionPrefix(uPart));
+
+      const isMatched = cParts.some(cPart => {
+        const cCleanLetter = cleanOption(cPart);
+        const cCleanText = cleanTextSimple(stripOptionPrefix(cPart));
+        
+        if (uCleanLetter && cCleanLetter && uCleanLetter === cCleanLetter) {
+          return true;
+        }
+        if (uCleanText && cCleanText && uCleanText === cCleanText) {
+          return true;
+        }
+        return false;
+      });
+
+      if (isMatched) {
+        matchCount++;
+      }
     });
 
-    const totalCorrect = cOptions.length;
+    const totalCorrect = cParts.length;
     const accuracy = totalCorrect > 0 ? Math.round((matchCount / totalCorrect) * 100) : 100;
     const score = 10 + Math.round((accuracy / 100) * 80);
 
     let feedback = "";
-    if (accuracy === 100 && uOptions.length === totalCorrect) {
+    if (accuracy === 100 && uParts.length === totalCorrect) {
       feedback = "Excellent! You selected all the correct choices.";
     } else if (matchCount > 0) {
       feedback = `Partially correct. You matched ${matchCount} out of ${totalCorrect} correct choices. Correct choices: ${correctAnswer}.`;
@@ -372,6 +442,14 @@ function cleanOption(opt) {
     .toLowerCase()
     .replace(/^([a-d])\b.*/i, "$1")
     .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+    .trim();
+}
+
+function stripOptionPrefix(text) {
+  return (text || "")
+    .replace(/^option\s+[a-d]\b/i, "")
+    .replace(/^choice\s+[a-d]\b/i, "")
+    .replace(/^[a-d]\s*[).:-]/i, "")
     .trim();
 }
 

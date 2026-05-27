@@ -6,6 +6,8 @@ require("./db/snowflake");
 
 const authRoutes = require("./routes/authRoutes");
 const questionRoutes = require("./routes/questionRoutes");
+const mockTestRoutes = require("./routes/mockTestRoutes");
+const forumRoutes = require("./routes/forumRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -23,6 +25,8 @@ app.get("/health", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/questions", questionRoutes);
+app.use("/api/mock-tests", mockTestRoutes);
+app.use("/api/forum", forumRoutes);
 
 app.use(errorHandler);
 

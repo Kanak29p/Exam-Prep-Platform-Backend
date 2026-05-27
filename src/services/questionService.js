@@ -14,14 +14,55 @@ async function findByCategory(category, subCategory) {
   return query(sql, [category, subCategory]);
 }
 
+const CANONICAL_ORDER = [
+  // Speaking
+  { category: 'Speaking', subCategory: 'Read Aloud' },
+  { category: 'Speaking', subCategory: 'Repeat Sentence' },
+  { category: 'Speaking', subCategory: 'Describe Image' },
+  { category: 'Speaking', subCategory: 'Re-tell Lecture' },
+  { category: 'Speaking', subCategory: 'Answer Short Questions' },
+  { category: 'Speaking', subCategory: 'Summarize Discussion' },
+  { category: 'Speaking', subCategory: 'Respond to a Situation' },
+
+  // Writing
+  { category: 'Writing', subCategory: 'Summarize Written Text' },
+  { category: 'Writing', subCategory: 'Write Essay' },
+
+  // Reading
+  { category: 'Reading', subCategory: 'Fill in the Blanks Reading & Writing' },
+  { category: 'Reading', subCategory: 'Multiple Choice Multiple Answer' },
+  { category: 'Reading', subCategory: 'Reorder Paragraph' },
+  { category: 'Reading', subCategory: 'Reading Fill in the Blanks' },
+  { category: 'Reading', subCategory: 'Multiple Choice Single Answer' },
+
+  // Listening
+  { category: 'Listening', subCategory: 'Summarize Spoken Text' },
+  { category: 'Listening', subCategory: 'MCQ Multiple Answer' },
+  { category: 'Listening', subCategory: 'Listening Fill in the Blanks' },
+  { category: 'Listening', subCategory: 'Highlight Correct Summary' },
+  { category: 'Listening', subCategory: 'MCQ Single Answer' },
+  { category: 'Listening', subCategory: 'Select Missing Word' },
+  { category: 'Listening', subCategory: 'Highlight Incorrect Word' },
+  { category: 'Listening', subCategory: 'Write from Dictation' }
+];
+
+function getCanonicalIndex(category, subCategory) {
+  const cCat = category.toLowerCase().trim();
+  const cSub = subCategory.toLowerCase().trim();
+  return CANONICAL_ORDER.findIndex(item => {
+    return item.category.toLowerCase().trim() === cCat &&
+           item.subCategory.toLowerCase().trim() === cSub;
+  });
+}
+
 async function listSections() {
   const sql = `
     SELECT DISTINCT CATEGORY, TYPE AS SUB_CATEGORY
     FROM ${CONFIG_TABLE}
-    ORDER BY CATEGORY, SUB_CATEGORY
+    WHERE LOWER(TRIM(TYPE)) != 'personal introduction'
   `;
   const rows = await query(sql);
-  return rows.map((r) => {
+  const mapped = rows.map((r) => {
     let cat = r.CATEGORY;
     const sub = r.SUB_CATEGORY;
     if (cat === "Speaking & Writing") {
@@ -37,6 +78,17 @@ async function listSections() {
       SUB_CATEGORY: sub,
     };
   });
+
+  // Sort according to CANONICAL_ORDER
+  mapped.sort((a, b) => {
+    const idxA = getCanonicalIndex(a.CATEGORY, a.SUB_CATEGORY);
+    const idxB = getCanonicalIndex(b.CATEGORY, b.SUB_CATEGORY);
+    const valA = idxA === -1 ? 999 : idxA;
+    const valB = idxB === -1 ? 999 : idxB;
+    return valA - valB;
+  });
+
+  return mapped;
 }
 
 async function findById(id) {
@@ -58,7 +110,7 @@ async function findById(id) {
   const rows = await query(sql, [id]);
   const row = rows[0] || null;
   if (row) {
-    if (row.CATEGORY === "Speaking & Writing") {
+    if (row.CATEGORY && row.CATEGORY.trim().toLowerCase() === "speaking & writing") {
       const lowerSub = (row.SUB_CATEGORY || "").toLowerCase();
       if (lowerSub.includes("summarize written") || lowerSub.includes("essay")) {
         row.CATEGORY = "Writing";

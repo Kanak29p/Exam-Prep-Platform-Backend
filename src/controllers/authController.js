@@ -88,6 +88,15 @@ async function dashboard(req, res, next) {
     `;
     const responses = await query(responsesSql, [String(userId)]);
 
+    // 2b. Fetch mock test attempts with test durations
+    const attemptsSql = `
+      SELECT a.STATUS, a.TIME_REMAINING, t.TOTAL_DURATION_MINUTES
+      FROM PTE_EXAM_PREP_PLATFORM.PUBLIC.MOCK_TEST_ATTEMPTS a
+      JOIN PTE_EXAM_PREP_PLATFORM.PUBLIC.MOCK_TESTS t ON a.MOCK_TEST_ID = t.ID
+      WHERE a.USER_ID = ?
+    `;
+    const attempts = await query(attemptsSql, [String(userId)]);
+
     // 3. Compute stats
     const totalResponses = responses.length;
     
@@ -108,18 +117,52 @@ async function dashboard(req, res, next) {
       pointsImproved = Math.max(0, latestScore - earliestScore);
     }
 
-    // Mock Tests Completed: Estimated as total responses divided by 3, capped at 15
-    const mockTestsCompleted = totalResponses > 0 ? Math.min(15, Math.floor(totalResponses / 3)) : 0;
+    // Mock Tests Completed: Actual completed mock test attempts count from database
+    const mockTestsCompleted = attempts.filter(a => a.STATUS === 'completed').length;
 
-    // Practice Time: Estimated as 5 minutes per response, formatted as hours/minutes
-    let practiceTime = "0m";
-    if (totalResponses > 0) {
-      const totalMinutes = totalResponses * 5;
-      if (totalMinutes >= 60) {
-        practiceTime = (totalMinutes / 60).toFixed(1) + "h";
-      } else {
-        practiceTime = totalMinutes + "m";
+    // Practice Time: Combined elapsed time in mock test attempts + estimated practice modules time
+    let totalTimeSeconds = 0;
+
+    // 1. Add actual elapsed time from mock test attempts (both pending and completed)
+    attempts.forEach(a => {
+      const totalSecs = (a.TOTAL_DURATION_MINUTES || 120) * 60;
+      const elapsedSecs = Math.max(0, totalSecs - (a.TIME_REMAINING || 0));
+      totalTimeSeconds += elapsedSecs;
+    });
+
+    // 2. Add estimated practice time per response depending on category
+    responses.forEach(r => {
+      let cat = r.CATEGORY;
+      const sub = r.SUB_CATEGORY || "";
+      if (cat === "Speaking & Writing") {
+        const lowerSub = sub.toLowerCase();
+        if (lowerSub.includes("summarize written") || lowerSub.includes("essay")) {
+          cat = "Writing";
+        } else {
+          cat = "Speaking";
+        }
       }
+      const catLower = (cat || "").toLowerCase();
+      if (catLower === "speaking") {
+        totalTimeSeconds += 90; // 1.5 minutes
+      } else if (catLower === "writing") {
+        totalTimeSeconds += 600; // 10 minutes
+      } else if (catLower === "reading") {
+        totalTimeSeconds += 120; // 2 minutes
+      } else if (catLower === "listening") {
+        totalTimeSeconds += 120; // 2 minutes
+      } else {
+        totalTimeSeconds += 120; // default 2 minutes
+      }
+    });
+
+    // Format Practice Time as hours (e.g. "1.5h") or minutes (e.g. "45m")
+    const totalMinutes = Math.round(totalTimeSeconds / 60);
+    let practiceTime = "0m";
+    if (totalMinutes >= 60) {
+      practiceTime = (totalMinutes / 60).toFixed(1) + "h";
+    } else if (totalMinutes > 0) {
+      practiceTime = totalMinutes + "m";
     }
 
     // 4. Group score progress by date (for the LineChart)
