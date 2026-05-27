@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const questionRoutes = require("./routes/questionRoutes");
 const mockTestRoutes = require("./routes/mockTestRoutes");
 const forumRoutes = require("./routes/forumRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/mock-tests", mockTestRoutes);
 app.use("/api/forum", forumRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.use(errorHandler);
 
