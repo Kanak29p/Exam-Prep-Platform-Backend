@@ -7,7 +7,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "import:questions": "node insertQuestions.js",
-    "test:query": "node scripts/test_query.js"
+    "test:query": "node scripts/test_query.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "snowflake-sdk": "^2.4.1"
   },
   "devDependencies": {
+    "jest": "^30.4.2",
     "nodemon": "^3.1.14"
   }
 }
