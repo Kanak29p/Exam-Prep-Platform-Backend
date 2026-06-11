@@ -1,18 +1,18 @@
-const connection = require("./db/snowflake");
+const { connection, query } = require("./src/db/snowflake");
 
-setTimeout(() => {
-  const query = `DESCRIBE TABLE PTE_EXAM_PREP_PLATFORM.PUBLIC.QUESTION_DETAILS`;
+setTimeout(async () => {
+  try {
+    const tests = await query("SELECT * FROM PTE_EXAM_PREP_PLATFORM.PUBLIC.MOCK_TESTS");
+    console.log("MOCK TESTS:");
+    console.log(JSON.stringify(tests, null, 2));
 
-  connection.execute({
-    sqlText: query,
-    complete: function (err, stmt, rows) {
-      if (err) {
-        console.error("Query failed:", err.message);
-        process.exit(1);
-      }
-      console.log("Table columns:");
-      rows.forEach(r => console.log(`- ${r.name} (${r.type})`));
-      process.exit(0);
-    }
-  });
+    const patterns = await query("SELECT * FROM PTE_EXAM_PREP_PLATFORM.PUBLIC.MOCK_TEST_PATTERN");
+    console.log("MOCK TEST PATTERNS:");
+    console.log(JSON.stringify(patterns, null, 2));
+
+    connection.destroy(() => process.exit(0));
+  } catch (err) {
+    console.error("Query failed:", err.message);
+    process.exit(1);
+  }
 }, 2000);
