@@ -39,6 +39,12 @@ async function startMockTestAttempt(req, res, next) {
     const data = await mockTestService.startMockTestAttempt(userId, id);
     return res.status(201).json(data);
   } catch (err) {
+    if (err.message === "Mock test not found") {
+      return res.status(404).json({ message: "Mock test not found" });
+    }
+    if (err.message === "No questions configured for this mock test") {
+      return res.status(400).json({ message: "No questions configured for this mock test" });
+    }
     next(err);
   }
 }
@@ -59,6 +65,15 @@ async function updateAttemptProgress(req, res, next) {
     const userId = req.user.id;
     const { id } = req.params;
     const { currentQuestionIndex, timeRemaining, grades } = req.body;
+
+    const attempt = await mockTestService.getAttemptById(id, userId);
+    if (!attempt) {
+      return res.status(404).json({ message: "Mock test attempt not found" });
+    }
+    if (attempt.STATUS === "completed" || attempt.status === "completed") {
+      return res.status(400).json({ message: "Cannot update progress of a completed mock test attempt" });
+    }
+
     await mockTestService.updateAttemptProgress(id, userId, {
       currentQuestionIndex,
       timeRemaining,
@@ -82,13 +97,29 @@ async function submitMockTestAttempt(req, res, next) {
       readingScore,
       listeningScore
     } = req.body;
+
+    const attempt = await mockTestService.getAttemptById(id, userId);
+    if (!attempt) {
+      return res.status(404).json({ message: "Mock test attempt not found" });
+    }
+    if (attempt.STATUS === "completed" || attempt.status === "completed") {
+      return res.status(400).json({ message: "This mock test attempt has already been submitted" });
+    }
+
+    const finalGrades = grades || {};
+    const finalOverallScore = overallScore !== undefined ? overallScore : 10;
+    const finalSpeakingScore = speakingScore !== undefined ? speakingScore : 10;
+    const finalWritingScore = writingScore !== undefined ? writingScore : 10;
+    const finalReadingScore = readingScore !== undefined ? readingScore : 10;
+    const finalListeningScore = listeningScore !== undefined ? listeningScore : 10;
+
     await mockTestService.submitMockTestAttempt(id, userId, {
-      grades,
-      overallScore,
-      speakingScore,
-      writingScore,
-      readingScore,
-      listeningScore
+      grades: finalGrades,
+      overallScore: finalOverallScore,
+      speakingScore: finalSpeakingScore,
+      writingScore: finalWritingScore,
+      readingScore: finalReadingScore,
+      listeningScore: finalListeningScore
     });
     return res.json({ message: "Mock test attempt submitted successfully" });
   } catch (err) {

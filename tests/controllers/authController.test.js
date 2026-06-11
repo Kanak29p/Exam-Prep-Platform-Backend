@@ -1,13 +1,17 @@
 jest.mock("../../src/config/env", () => ({ jwtSecret: "test-secret" }));
+const mockVerifyIdToken = jest.fn();
 jest.mock("../../src/config/firebaseAdmin", () => ({
   auth: () => ({
-    verifyIdToken: jest.fn(),
+    verifyIdToken: mockVerifyIdToken,
   }),
 }));
 jest.mock("../../src/services/userService", () => ({
   findByEmail: jest.fn(),
   createStudent: jest.fn(),
   updateProfile: jest.fn(),
+}));
+jest.mock("../../src/db/snowflake", () => ({
+  query: jest.fn(),
 }));
 
 const jwt = require("jsonwebtoken");
@@ -44,7 +48,7 @@ describe("authController.login", () => {
 
   test("401 – invalid Firebase token", async () => {
     req.body.firebaseToken = "bad-token";
-    admin.auth().verifyIdToken.mockRejectedValueOnce(new Error("invalid token"));
+    mockVerifyIdToken.mockRejectedValueOnce(new Error("invalid token"));
     await login(req, res, next);
     expect(res.status).toHaveBeenCalledWith(401);
     expect(res.json).toHaveBeenCalledWith(
@@ -54,7 +58,7 @@ describe("authController.login", () => {
 
   test("404 – user not found in DB", async () => {
     req.body.firebaseToken = "good-token";
-    admin.auth().verifyIdToken.mockResolvedValueOnce({ email: "unknown@test.com" });
+    mockVerifyIdToken.mockResolvedValueOnce({ email: "unknown@test.com" });
     userService.findByEmail.mockResolvedValueOnce(null);
     await login(req, res, next);
     expect(res.status).toHaveBeenCalledWith(404);
@@ -63,7 +67,7 @@ describe("authController.login", () => {
 
   test("200 – successful login returns JWT and user payload", async () => {
     req.body.firebaseToken = "good-token";
-    admin.auth().verifyIdToken.mockResolvedValueOnce({ email: "student@test.com" });
+    mockVerifyIdToken.mockResolvedValueOnce({ email: "student@test.com" });
     userService.findByEmail.mockResolvedValueOnce({
       ID: "u1", NAME: "Alice", EMAIL: "student@test.com",
       ROLE: "student", PLAN: "Premium",
@@ -90,7 +94,7 @@ describe("authController.login", () => {
 
   test("calls next(err) on unexpected error", async () => {
     req.body.firebaseToken = "t";
-    admin.auth().verifyIdToken.mockResolvedValueOnce({ email: "a@b.com" });
+    mockVerifyIdToken.mockResolvedValueOnce({ email: "a@b.com" });
     userService.findByEmail.mockRejectedValueOnce(new Error("DB error"));
     await login(req, res, next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));

@@ -6,6 +6,7 @@ jest.mock("../../src/services/mockTestService", () => ({
   listMockTestAttempts: jest.fn(),
   updateAttemptProgress: jest.fn(),
   submitMockTestAttempt: jest.fn(),
+  getAttemptById: jest.fn(),
 }));
 
 const mockTestService = require("../../src/services/mockTestService");
@@ -103,7 +104,9 @@ describe("mockTestController.startMockTestAttempt", () => {
   test("forwards error when mock test not found", async () => {
     mockTestService.startMockTestAttempt.mockRejectedValueOnce(new Error("Mock test not found"));
     await startMockTestAttempt(req, res, next);
-    expect(next).toHaveBeenCalledWith(expect.objectContaining({ message: "Mock test not found" }));
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "Mock test not found" });
+    expect(next).not.toHaveBeenCalled();
   });
 
   test("forwards error when no questions configured", async () => {
@@ -111,7 +114,9 @@ describe("mockTestController.startMockTestAttempt", () => {
       new Error("No questions configured for this mock test")
     );
     await startMockTestAttempt(req, res, next);
-    expect(next).toHaveBeenCalledWith(expect.any(Error));
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "No questions configured for this mock test" });
+    expect(next).not.toHaveBeenCalled();
   });
 });
 
@@ -131,14 +136,29 @@ describe("mockTestController.updateAttemptProgress", () => {
     next = jest.fn();
   });
 
+  test("404 – attempt not found", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce(null);
+    await updateAttemptProgress(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "Mock test attempt not found" });
+  });
+
+  test("400 – attempt already completed", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce({ ID: "attempt-1", STATUS: "completed" });
+    await updateAttemptProgress(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Cannot update progress of a completed mock test attempt" });
+  });
+
   test("saves progress and returns success message", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce({ ID: "attempt-1", STATUS: "pending" });
     mockTestService.updateAttemptProgress.mockResolvedValueOnce({});
     await updateAttemptProgress(req, res, next);
     expect(res.json).toHaveBeenCalledWith({ message: "Progress saved successfully" });
   });
 
   test("calls next(err) on service failure", async () => {
-    mockTestService.updateAttemptProgress.mockRejectedValueOnce(new Error("fail"));
+    mockTestService.getAttemptById.mockRejectedValueOnce(new Error("fail"));
     await updateAttemptProgress(req, res, next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
@@ -167,7 +187,22 @@ describe("mockTestController.submitMockTestAttempt", () => {
     next = jest.fn();
   });
 
+  test("404 – attempt not found", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce(null);
+    await submitMockTestAttempt(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "Mock test attempt not found" });
+  });
+
+  test("400 – duplicate submission (already completed)", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce({ ID: "attempt-1", STATUS: "completed" });
+    await submitMockTestAttempt(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "This mock test attempt has already been submitted" });
+  });
+
   test("submits and returns success message", async () => {
+    mockTestService.getAttemptById.mockResolvedValueOnce({ ID: "attempt-1", STATUS: "pending" });
     mockTestService.submitMockTestAttempt.mockResolvedValueOnce({});
     await submitMockTestAttempt(req, res, next);
     expect(res.json).toHaveBeenCalledWith({ message: "Mock test attempt submitted successfully" });
@@ -178,8 +213,28 @@ describe("mockTestController.submitMockTestAttempt", () => {
     );
   });
 
+  test("submits without answering – defaults scores to 10", async () => {
+    req.body = {}; // empty submission
+    mockTestService.getAttemptById.mockResolvedValueOnce({ ID: "attempt-1", STATUS: "pending" });
+    mockTestService.submitMockTestAttempt.mockResolvedValueOnce({});
+    await submitMockTestAttempt(req, res, next);
+    expect(res.json).toHaveBeenCalledWith({ message: "Mock test attempt submitted successfully" });
+    expect(mockTestService.submitMockTestAttempt).toHaveBeenCalledWith(
+      "attempt-1",
+      "u1",
+      expect.objectContaining({
+        grades: {},
+        overallScore: 10,
+        speakingScore: 10,
+        writingScore: 10,
+        readingScore: 10,
+        listeningScore: 10,
+      })
+    );
+  });
+
   test("calls next(err) on service failure", async () => {
-    mockTestService.submitMockTestAttempt.mockRejectedValueOnce(new Error("DB error"));
+    mockTestService.getAttemptById.mockRejectedValueOnce(new Error("DB error"));
     await submitMockTestAttempt(req, res, next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });

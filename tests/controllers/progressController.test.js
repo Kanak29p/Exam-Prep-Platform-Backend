@@ -7,8 +7,8 @@ jest.mock("../../src/services/userService", () => ({
   updateProfile: jest.fn(),
 }));
 
-const snowflakeMock = { query: jest.fn() };
-jest.mock("../../src/db/snowflake", () => snowflakeMock);
+const mockSnowflake = { query: jest.fn() };
+jest.mock("../../src/db/snowflake", () => mockSnowflake);
 
 const { dashboard } = require("../../src/controllers/authController");
 
@@ -31,7 +31,7 @@ describe("authController.dashboard – progress API", () => {
 
   // helper: mock query for user + responses + attempts
   function mockQueries({ userRow = {}, responses = [], attempts = [] } = {}) {
-    snowflakeMock.query
+    mockSnowflake.query
       .mockResolvedValueOnce([userRow])   // user profile query
       .mockResolvedValueOnce(responses)   // responses query
       .mockResolvedValueOnce(attempts);   // attempts query
@@ -156,7 +156,7 @@ describe("authController.dashboard – progress API", () => {
   });
 
   test("calls next(err) on DB failure", async () => {
-    snowflakeMock.query.mockRejectedValueOnce(new Error("Snowflake down"));
+    mockSnowflake.query.mockRejectedValueOnce(new Error("Snowflake down"));
     await dashboard(req, res, next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });

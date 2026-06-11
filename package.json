@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "import:questions": "node insertQuestions.js",
     "test:query": "node scripts/test_query.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",

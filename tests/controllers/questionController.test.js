@@ -3,6 +3,9 @@ jest.mock("../../src/services/questionService", () => ({
   listSections: jest.fn(),
   findById: jest.fn(),
   submitAnswer: jest.fn(),
+  createQuestion: jest.fn(),
+  updateQuestion: jest.fn(),
+  deleteQuestion: jest.fn(),
 }));
 
 jest.mock("../../src/utils/normalizeQuery", () => ({
@@ -10,7 +13,14 @@ jest.mock("../../src/utils/normalizeQuery", () => ({
 }));
 
 const questionService = require("../../src/services/questionService");
-const { listQuestions, getQuestionById, submitAnswer } = require("../../src/controllers/questionController");
+const {
+  listQuestions,
+  getQuestionById,
+  submitAnswer,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion
+} = require("../../src/controllers/questionController");
 
 function makeRes() {
   const res = {};
@@ -325,5 +335,192 @@ describe("questionController.submitAnswer – Listening Dictation", () => {
     const call = res.json.mock.calls[0][0];
     expect(call.accuracy).toBeLessThan(100);
     expect(call.score).toBeGreaterThan(10);
+  });
+});
+
+// =====================================================================
+// createQuestion
+// =====================================================================
+describe("questionController.createQuestion", () => {
+  let req, res, next;
+  beforeEach(() => {
+    jest.clearAllMocks();
+    req = { body: {} };
+    res = makeRes();
+    next = jest.fn();
+  });
+
+  test("400 – missing title", async () => {
+    req.body = { category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "title is required" });
+  });
+
+  test("400 – empty title", async () => {
+    req.body = { title: "", category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "title cannot be empty" });
+  });
+
+  test("400 – missing category", async () => {
+    req.body = { title: "Title", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "category is required" });
+  });
+
+  test("400 – invalid category", async () => {
+    req.body = { title: "Title", category: "InvalidCategory", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Invalid category" });
+  });
+
+  test("400 – missing difficulty", async () => {
+    req.body = { title: "Title", category: "Speaking", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "difficulty is required" });
+  });
+
+  test("400 – invalid difficulty", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "SuperHard", questionTypeId: 2, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Invalid difficulty" });
+  });
+
+  test("400 – missing questionTypeId", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "Medium", questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "questionTypeId is required" });
+  });
+
+  test("400 – invalid questionTypeId (too large)", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "Medium", questionTypeId: 99, questionText: "text" };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Invalid question type" });
+  });
+
+  test("400 – empty options for MCQ (type 8)", async () => {
+    req.body = { title: "Title", category: "Reading", difficulty: "Medium", questionTypeId: 8, questionText: "text", options: [] };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "options cannot be empty" });
+  });
+
+  test("400 – duplicate question ID", async () => {
+    req.body = { id: 10, title: "Title", category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    questionService.findById.mockResolvedValueOnce({ ID: 10 });
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Duplicate question ID" });
+  });
+
+  test("400 – empty questionText", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "  " };
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "questionText cannot be empty" });
+  });
+
+  test("201 – successful question creation", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "text", correctAnswer: "ans" };
+    const mockQ = { ID: 10, QUESTION_TYPE_ID: 2, QUESTION_TEXT: "text", TITLE: "Title" };
+    questionService.createQuestion.mockResolvedValueOnce(mockQ);
+
+    await createQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(201);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Question created successfully",
+      question: mockQ
+    });
+  });
+
+  test("calls next(err) on service failure", async () => {
+    req.body = { title: "Title", category: "Speaking", difficulty: "Medium", questionTypeId: 2, questionText: "text" };
+    questionService.createQuestion.mockRejectedValueOnce(new Error("DB error"));
+    await createQuestion(req, res, next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+// =====================================================================
+// updateQuestion
+// =====================================================================
+describe("questionController.updateQuestion", () => {
+  let req, res, next;
+  beforeEach(() => {
+    jest.clearAllMocks();
+    req = { params: { id: "10" }, body: {} };
+    res = makeRes();
+    next = jest.fn();
+  });
+
+  test("404 – question not found", async () => {
+    questionService.findById.mockResolvedValueOnce(null);
+    await updateQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "Question not found" });
+  });
+
+  test("200 – successful update", async () => {
+    const existing = { ID: 10, QUESTION_TEXT: "old text" };
+    const updated = { ID: 10, QUESTION_TEXT: "new text" };
+    questionService.findById.mockResolvedValueOnce(existing);
+    questionService.updateQuestion.mockResolvedValueOnce(updated);
+
+    req.body = { questionText: "new text" };
+    await updateQuestion(req, res, next);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Question updated successfully",
+      question: updated
+    });
+  });
+
+  test("calls next(err) on service failure", async () => {
+    questionService.findById.mockResolvedValueOnce({ ID: 10 });
+    questionService.updateQuestion.mockRejectedValueOnce(new Error("DB error"));
+    await updateQuestion(req, res, next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+// =====================================================================
+// deleteQuestion
+// =====================================================================
+describe("questionController.deleteQuestion", () => {
+  let req, res, next;
+  beforeEach(() => {
+    jest.clearAllMocks();
+    req = { params: { id: "10" } };
+    res = makeRes();
+    next = jest.fn();
+  });
+
+  test("404 – question not found", async () => {
+    questionService.findById.mockResolvedValueOnce(null);
+    await deleteQuestion(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: "Question not found" });
+  });
+
+  test("200 – successful deletion", async () => {
+    questionService.findById.mockResolvedValueOnce({ ID: 10 });
+    questionService.deleteQuestion.mockResolvedValueOnce({});
+
+    await deleteQuestion(req, res, next);
+    expect(res.json).toHaveBeenCalledWith({ message: "Question deleted successfully" });
+  });
+
+  test("calls next(err) on service failure", async () => {
+    questionService.findById.mockResolvedValueOnce({ ID: 10 });
+    questionService.deleteQuestion.mockRejectedValueOnce(new Error("DB error"));
+    await deleteQuestion(req, res, next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });
