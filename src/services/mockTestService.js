@@ -224,6 +224,12 @@ async function submitMockTestAttempt(attemptId, userId, { grades, overallScore, 
   ]);
 }
 
+async function getAttemptById(attemptId, userId) {
+  const sql = "SELECT * FROM PTE_EXAM_PREP_PLATFORM.PUBLIC.MOCK_TEST_ATTEMPTS WHERE ID = ? AND USER_ID = ?";
+  const rows = await query(sql, [attemptId, String(userId)]);
+  return rows[0] || null;
+}
+
 module.exports = {
   listMockTests,
   getMockTestById,
@@ -231,5 +237,6 @@ module.exports = {
   startMockTestAttempt,
   listMockTestAttempts,
   updateAttemptProgress,
-  submitMockTestAttempt
+  submitMockTestAttempt,
+  getAttemptById
 };

@@ -144,4 +144,37 @@ async function submitAnswer({ userId, questionId, audioUrl, answerText, score, f
   ]);
 }
 
-module.exports = { findByCategory, listSections, findById, submitAnswer };
+async function createQuestion({ id, questionTypeId, questionText, instruction, title, correctAnswer, options }) {
+  const nextId = id !== undefined ? id : (await query("SELECT COALESCE(MAX(ID), 0) + 1 AS NEXT_ID FROM " + TABLE))[0].NEXT_ID || 1;
+  const sql = `
+    INSERT INTO ${TABLE} (ID, QUESTION_TYPE_ID, QUESTION_TEXT, INSTRUCTION, TITLE, CORRECT_ANSWER, OPTIONS)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `;
+  await query(sql, [nextId, questionTypeId, questionText, instruction || "", title, correctAnswer || "", options || null]);
+  return { ID: nextId, QUESTION_TYPE_ID: questionTypeId, QUESTION_TEXT: questionText, INSTRUCTION: instruction || "", TITLE: title, CORRECT_ANSWER: correctAnswer || "", OPTIONS: options || null };
+}
+
+async function updateQuestion(id, { questionTypeId, questionText, instruction, title, correctAnswer }) {
+  const sql = `
+    UPDATE ${TABLE}
+    SET QUESTION_TYPE_ID = ?, QUESTION_TEXT = ?, INSTRUCTION = ?, TITLE = ?, CORRECT_ANSWER = ?
+    WHERE ID = ?
+  `;
+  await query(sql, [questionTypeId, questionText, instruction, title, correctAnswer, id]);
+  return findById(id);
+}
+
+async function deleteQuestion(id) {
+  const sql = `DELETE FROM ${TABLE} WHERE ID = ?`;
+  return query(sql, [id]);
+}
+
+module.exports = {
+  findByCategory,
+  listSections,
+  findById,
+  submitAnswer,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion
+};

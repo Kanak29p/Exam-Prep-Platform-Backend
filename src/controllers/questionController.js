@@ -58,12 +58,12 @@ async function submitAnswer(req, res, next) {
     let missedWords = [];
 
     const categoryLower = (question.CATEGORY || "").toLowerCase();
-    const isSpeaking = categoryLower === "speaking" || categoryLower === "speaking & writing";
-    const isWriting = categoryLower === "writing";
+    const subCat = (question.SUB_CATEGORY || "").toLowerCase();
+    const isSpeaking = categoryLower === "speaking" || (categoryLower === "speaking & writing" && !subCat.includes("summarize written") && !subCat.includes("essay"));
+    const isWriting = categoryLower === "writing" || (categoryLower === "speaking & writing" && (subCat.includes("summarize") || subCat.includes("essay")));
     const isReading = categoryLower === "reading";
     const isListening = categoryLower === "listening";
 
-    const subCat = (question.SUB_CATEGORY || "").toLowerCase();
     const isPersonalIntro = subCat.includes("personal introduction");
 
     if (isPersonalIntro) {
@@ -468,4 +468,124 @@ function cleanTextSimple(text) {
     .trim();
 }
 
-module.exports = { listQuestions, listSections, getQuestionById, submitAnswer };
+async function createQuestion(req, res, next) {
+  try {
+    const { id, questionTypeId, questionText, instruction, title, correctAnswer, category, difficulty, options } = req.body;
+    
+    // 1. Title Validation
+    if (title === undefined || title === null) {
+      return res.status(400).json({ message: "title is required" });
+    }
+    if (String(title).trim().length === 0) {
+      return res.status(400).json({ message: "title cannot be empty" });
+    }
+
+    // 2. Category Validation
+    if (category === undefined || category === null) {
+      return res.status(400).json({ message: "category is required" });
+    }
+    const validCategories = ["speaking", "writing", "reading", "listening", "speaking & writing"];
+    if (!validCategories.includes(String(category).trim().toLowerCase())) {
+      return res.status(400).json({ message: "Invalid category" });
+    }
+
+    // 3. Difficulty Validation
+    if (difficulty === undefined || difficulty === null) {
+      return res.status(400).json({ message: "difficulty is required" });
+    }
+    const validDifficulties = ["easy", "medium", "hard"];
+    if (!validDifficulties.includes(String(difficulty).trim().toLowerCase())) {
+      return res.status(400).json({ message: "Invalid difficulty" });
+    }
+
+    // 4. Question Type ID Validation
+    if (questionTypeId === undefined || questionTypeId === null) {
+      return res.status(400).json({ message: "questionTypeId is required" });
+    }
+    const typeIdInt = parseInt(questionTypeId);
+    if (isNaN(typeIdInt) || typeIdInt < 1 || typeIdInt > 23) {
+      return res.status(400).json({ message: "Invalid question type" });
+    }
+
+    // 5. Options Validation (Multiple choice question types: 8, 9, 14, 15)
+    const mcqTypes = [8, 9, 14, 15];
+    if (mcqTypes.includes(typeIdInt)) {
+      if (!options || (Array.isArray(options) && options.length === 0)) {
+        return res.status(400).json({ message: "options cannot be empty" });
+      }
+    }
+
+    // 6. Duplicate ID Validation
+    if (id !== undefined && id !== null) {
+      const existing = await questionService.findById(id);
+      if (existing) {
+        return res.status(400).json({ message: "Duplicate question ID" });
+      }
+    }
+
+    if (questionText === undefined || questionText === null) {
+      return res.status(400).json({ message: "questionText is required" });
+    }
+    if (String(questionText).trim().length === 0) {
+      return res.status(400).json({ message: "questionText cannot be empty" });
+    }
+
+    const question = await questionService.createQuestion({
+      id: id ? parseInt(id) : undefined,
+      questionTypeId: typeIdInt,
+      questionText,
+      instruction,
+      title,
+      correctAnswer,
+      options: options ? (Array.isArray(options) ? JSON.stringify(options) : options) : undefined
+    });
+    return res.status(201).json({ message: "Question created successfully", question });
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function updateQuestion(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { questionTypeId, questionText, instruction, title, correctAnswer } = req.body;
+    const existing = await questionService.findById(id);
+    if (!existing) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+    const question = await questionService.updateQuestion(id, {
+      questionTypeId,
+      questionText,
+      instruction,
+      title,
+      correctAnswer
+    });
+    return res.json({ message: "Question updated successfully", question });
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function deleteQuestion(req, res, next) {
+  try {
+    const { id } = req.params;
+    const existing = await questionService.findById(id);
+    if (!existing) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+    await questionService.deleteQuestion(id);
+    return res.json({ message: "Question deleted successfully" });
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = {
+  listQuestions,
+  listSections,
+  getQuestionById,
+  submitAnswer,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion
+};
