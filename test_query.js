@@ -1,12 +1,7 @@
 const connection = require("./db/snowflake");
 
 setTimeout(() => {
-  const query = `
-    SELECT CATEGORY, SUB_CATEGORY, COUNT(*) AS Q_COUNT
-    FROM PTE_EXAM_PREP_PLATFORM.PUBLIC.QUESTION_DETAILS 
-    GROUP BY CATEGORY, SUB_CATEGORY
-    ORDER BY CATEGORY, SUB_CATEGORY
-  `;
+  const query = `DESCRIBE TABLE PTE_EXAM_PREP_PLATFORM.PUBLIC.QUESTION_DETAILS`;
 
   connection.execute({
     sqlText: query,
@@ -15,9 +10,9 @@ setTimeout(() => {
         console.error("Query failed:", err.message);
         process.exit(1);
       }
-      console.log("Database Subcategory Counts:", rows);
+      console.log("Table columns:");
+      rows.forEach(r => console.log(`- ${r.name} (${r.type})`));
       process.exit(0);
     }
   });
 }, 2000);
-
