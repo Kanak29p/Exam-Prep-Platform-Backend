@@ -1,8 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 
+const originalExit = process.exit;
+process.exit = function(code) {
+  console.trace("process.exit called with code:", code);
+  originalExit.call(process, code);
+};
+
+
 const env = require("./config/env");
-require("./db/snowflake");
+// require("./db/snowflake");
 
 const authRoutes = require("./routes/authRoutes");
 const questionRoutes = require("./routes/questionRoutes");
@@ -32,6 +39,14 @@ app.use("/api/notifications", notificationRoutes);
 
 app.use(errorHandler);
 
-app.listen(env.port, "0.0.0.0", () => {
-  console.log(`Server running on port ${env.port}`);
+const server = app.listen(5005, "0.0.0.0", () => {
+  console.log(`Server running on port 5005`);
 });
+
+process.on('exit', (code) => {
+  console.log('Process exiting with code:', code);
+});
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
