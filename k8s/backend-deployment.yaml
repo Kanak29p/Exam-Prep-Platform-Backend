@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pte-backend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: pte-backend
+
+  template:
+    metadata:
+      labels:
+        app: pte-backend
+
+    spec:
+      containers:
+        - name: pte-backend
+          image: 641759955915.dkr.ecr.ap-south-1.amazonaws.com/pte-backend:v1
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 5001
+
+          envFrom:
+            - secretRef:
+                name: pte-backend-secret

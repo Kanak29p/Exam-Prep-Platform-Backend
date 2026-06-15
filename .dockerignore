@@ -1,0 +1,10 @@
+node_modules
+coverage
+tests
+.git
+.gitignore
+Dockerfile
+render.yaml
+*.log
+
+.env
