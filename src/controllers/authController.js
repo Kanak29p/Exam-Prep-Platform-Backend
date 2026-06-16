@@ -15,8 +15,9 @@ async function login(req, res, next) {
     try {
       decodedToken = await admin.auth().verifyIdToken(firebaseToken);
     } catch (err) {
+      console.error("Firebase token verification failed:", err);
       return res.status(401).json({
-        message: "Invalid Firebase token",
+        message: "Firebase Token Error: " + err.message,
         error: err.message,
       });
     }
